@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-07",
+  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=29.0.1",
+  "notes": [
+    "Avtomatik yenilənmə sistemi aktivləşdirildi (AMMO Updater)",
+    "Cihaza bağlı giriş və admin \"Cihazlar və yeniləmə\" paneli"
+  ],
+  "sha256": "d62bb4fd2da1d94883d6cde25444d77f2f759d9492137ae89966da716896fe76",
+  "version": "29.0.1"
+}
