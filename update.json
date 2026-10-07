@@ -1,10 +1,9 @@
 {
   "date": "2026-10-07",
-  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=29.1.0",
+  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=29.1.1",
   "notes": [
-    "Yeni modul: Sənəd hazırla — hesab-faktura, təhvil-təslim aktı, razılaşma protokolu, işçi sənədləri (çap / PDF / Word)",
-    "Yeni modul: ƏDV analizi — e-qaimə Excel fayllarından hesablanmış və əvəzləşdirilən ƏDV, aylar, kontragentlər, yoxlamalar"
+    "Sahib hesabı (memmed.allahverdiyev@yahoo.com) cihaz bağlamasından azad edildi — istənilən kompüterdən giriş"
   ],
-  "sha256": "45405242713f02067624c86ef55cca2ea3f5d3a9a2fd8a49e03a73afd5f69e57",
-  "version": "29.1.0"
+  "sha256": "b6a7f6b8b5325fecd4f333d30f6a5d15a31d9a100ea1df96201c173a5c98bce0",
+  "version": "29.1.1"
 }
