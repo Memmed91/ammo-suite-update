@@ -1,9 +1,12 @@
 {
   "date": "2026-10-07",
-  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=29.1.1",
+  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=29.2.0",
   "notes": [
-    "Sahib hesabı (memmed.allahverdiyev@yahoo.com) cihaz bağlamasından azad edildi — istənilən kompüterdən giriş"
+    "Yeniləmədən sonra məlumatlar itmir: panellər buluddakı məlumatı avtomatik geri yükləyir",
+    "Panellər açılarkən boş dəyərlərin buluddakı məlumatın üstünə yazılması düzəldildi",
+    "Vergi məktubları: ayrıca parol tələb olunmur, Firebase bağlantısı daimi saxlanılır",
+    "Bəyannamə nəzarət: bağlantı kəsilsə avtomatik bərpa olunur"
   ],
-  "sha256": "b6a7f6b8b5325fecd4f333d30f6a5d15a31d9a100ea1df96201c173a5c98bce0",
-  "version": "29.1.1"
+  "sha256": "134dd7196ac40aeef2eb99d456ec535009f91c9fbaa680c7bafb4e0fee7ef98a",
+  "version": "29.2.0"
 }
