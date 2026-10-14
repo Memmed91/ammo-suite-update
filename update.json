@@ -1,9 +1,10 @@
 {
   "date": "2026-10-14",
-  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.0.1",
+  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.0.2",
   "notes": [
-    "Admin bağladığı paneli öz menyusunda 'gizli' işarəsi ilə görür, işçilərdə görünmür"
+    "Firebase oxumalarına böyük qənaət: panellər artıq hər 3–5 saniyədə bütün məlumatı oxumur",
+    "Başqa kompüterdəki dəyişiklik ən çox 30 saniyəyə görünür"
   ],
-  "sha256": "9843e1e46bdab99588d68c73a02d74cb4f9c5ecdabe93be414b24be3ad5f8657",
-  "version": "31.0.1"
+  "sha256": "499e016b20766377b8fe175222beb579b321f9e6a4b50182c5ebe6804c9b8904",
+  "version": "31.0.2"
 }
