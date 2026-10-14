@@ -1,13 +1,9 @@
 {
   "date": "2026-10-14",
-  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.0.0",
+  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.0.1",
   "notes": [
-    "Yeni interfeys: qruplu sol menyu, vahid ikonlar, səliqəli rənglər, yeni giriş ekranı",
-    "Admin düymələri, yeniləmə və çıxış — sol aşağıda adınıza basanda açılan menyuda",
-    "Gömrük nəzarət paneli ləğv edildi",
-    "Bəyannamə nəzarət və Vergi məktubları Konsalting Firebase layihəsinə köçürüldü — ayrıca parol yoxdur",
-    "Köhnə serverdəki qeydlər panel açılanda avtomatik köçürülür"
+    "Admin bağladığı paneli öz menyusunda 'gizli' işarəsi ilə görür, işçilərdə görünmür"
   ],
-  "sha256": "ddbf976768a4a54dd5b79cc4aa6c09e58f58121033452f3421d38956d8e62fd5",
-  "version": "31.0.0"
+  "sha256": "9843e1e46bdab99588d68c73a02d74cb4f9c5ecdabe93be414b24be3ad5f8657",
+  "version": "31.0.1"
 }
