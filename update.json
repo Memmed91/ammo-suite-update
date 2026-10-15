@@ -1,10 +1,10 @@
 {
   "date": "2026-10-15",
-  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.0.3",
+  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.1.0",
   "notes": [
-    "Sürücülərdən 50 ₼ xidmət haqqı ayda bir dəfə, maşın nömrəsinə görə avtomatik tutulur",
-    "Vergi məktubları: qeydiyyat nömrəsi, gecikmə günü və .adoc sənədi sütunu"
+    "Yeni panel: Şəxsi hesab → Analiz — borc, faiz, ödənişlərin hara getdiyi, uyğunsuzluqlar, köməkçi",
+    "Menyuda Şəxsi hesab vərəqəsi: üzərinə gələndə Borc və Analiz açılır"
   ],
-  "sha256": "eb7cc14cb5fa5de59fb5f5ab8c3713ddd9acc1a6ffbcd3352f208b5cc09856d7",
-  "version": "31.0.3"
+  "sha256": "d5e95b0dd0ac1c57d110562f5bfb984570b56ba1a70a21460019820d18f0306f",
+  "version": "31.1.0"
 }
