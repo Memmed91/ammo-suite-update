@@ -1,10 +1,10 @@
 {
-  "date": "2026-10-14",
-  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.0.2",
+  "date": "2026-10-15",
+  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.0.3",
   "notes": [
-    "Firebase oxumalarına böyük qənaət: panellər artıq hər 3–5 saniyədə bütün məlumatı oxumur",
-    "Başqa kompüterdəki dəyişiklik ən çox 30 saniyəyə görünür"
+    "Sürücülərdən 50 ₼ xidmət haqqı ayda bir dəfə, maşın nömrəsinə görə avtomatik tutulur",
+    "Vergi məktubları: qeydiyyat nömrəsi, gecikmə günü və .adoc sənədi sütunu"
   ],
-  "sha256": "499e016b20766377b8fe175222beb579b321f9e6a4b50182c5ebe6804c9b8904",
-  "version": "31.0.2"
+  "sha256": "eb7cc14cb5fa5de59fb5f5ab8c3713ddd9acc1a6ffbcd3352f208b5cc09856d7",
+  "version": "31.0.3"
 }
