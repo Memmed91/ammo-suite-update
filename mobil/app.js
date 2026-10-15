@@ -15,7 +15,7 @@
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNfq2z5uxaU1CLxjGG1gVS1K1FaiRA5dFKvmUkzDNGRz1f2qsHOVdFu3-sy4zygkZN/exec';
   const BASE = `https://firestore.googleapis.com/v1/projects/${FB.projectId}/databases/(default)/documents`;
   const AUTH_KEY = 'ammoMobAuth';
-  const VERSION = '1.0.0';
+  const VERSION = '1.1.0';
 
   // ------------------------------------------------------------------ köməkçilər
   const $ = (s, r = document) => r.querySelector(s);
@@ -193,6 +193,7 @@
   // ------------------------------------------------------------------ marşrutlar və qabıq
   const SECTIONS = {
     home: { title: 'Əsas', icon: '🏠', render: viewHome },
+    panels: { title: 'AMMO SUITE panelləri', short: 'Panellər', icon: '🧩', render: viewPanels },
     tasks: { title: 'Tapşırıqlar', icon: '✅', render: viewTasks },
     beyanname: { title: 'Bəyannamə nəzarət', short: 'Bəyannamə', icon: '📊', render: viewBeyanname },
     letters: { title: 'Vergi məktubları', short: 'Məktublar', icon: '📬', render: viewLetters },
@@ -208,7 +209,7 @@
   let current = 'home', stopTimers = [];
 
   function tabsFor() {
-    if (isAdmin()) return ['home', 'tasks', 'beyanname', 'remote', 'more'];
+    if (isAdmin()) return ['home', 'panels', 'tasks', 'remote', 'more'];
     const t = EMPLOYEE_SECTIONS.slice(0, 4);
     return EMPLOYEE_SECTIONS.length > 4 ? [...t, 'more'] : t;
   }
@@ -263,7 +264,7 @@
       <div class="sec-title">Ofisdə e-taxes açıq olan kompüterlər</div>
       <div class="list" id="agents"><div class="empty">Yoxlanılır…</div></div>
       <div class="sec-title">Bölmələr</div>
-      <div class="list">${['beyanname', 'driver', 'docs', 'remote', 'admin'].map((id) => `<div class="item" data-go="${id}"><span style="font-size:20px">${SECTIONS[id].icon}</span><div class="main"><b>${esc(SECTIONS[id].title)}</b></div><span class="muted">›</span></div>`).join('')}</div>
+      <div class="list">${['panels', 'beyanname', 'driver', 'docs', 'remote', 'admin'].map((id) => `<div class="item" data-go="${id}"><span style="font-size:20px">${SECTIONS[id].icon}</span><div class="main"><b>${esc(SECTIONS[id].title)}</b></div><span class="muted">›</span></div>`).join('')}</div>
       <p class="muted small" style="text-align:center">AMMO Mobil ${VERSION}</p>`;
     $$('[data-go]', view).forEach((b) => b.onclick = () => go(b.dataset.go));
     const set = (id, v, sub, cls) => { const el = $('#k-' + id); if (!el) return; el.textContent = v; if (sub != null) $('#k-' + id + '2').textContent = sub; if (cls) el.parentElement.classList.add(cls); };
@@ -863,6 +864,107 @@
     };
   }
 
+  // ================================================================== AMMO SUITE PANELLƏRİ (tam işlək)
+  // Kompüterdəki AMMO SUITE-in eyni panelləri: GitHub-dakı AMMO_SUITE.zip telefona bir dəfə yüklənir
+  // (yeni versiya çıxanda özü yenilənir), chrome-shim.js genişlənmə API-lərini əvəz edir, məlumat
+  // cloud-sync.js ilə eyni Firebase-dən gəlir və ora yazılır — kompüterlərdə dərhal görünür.
+  const SUITE_BASE = new URL('suite/', location.href.replace(/#.*$/, '')).href;
+  const SUITE_ZIP = new URL('../AMMO_SUITE.zip', location.href.replace(/#.*$/, '')).href;
+  const SUITE_INFO = new URL('../update.json', location.href.replace(/#.*$/, '')).href;
+  const SUITE_CACHE = 'ammo-suite-files';
+  const SUITE_DEFAULT = [
+    ['taskpanel', 'TaskPanel', '✅', 'modules/taskpanel/index.html'], ['emekhaqqi', 'Əməkhaqqı', '💼', 'modules/emekhaqqi/app.html'],
+    ['kurs', 'Kurs İdarəetmə', '🎓', 'modules/kurs/app.html'], ['sexsiHesab', 'Şəxsi hesab → Borc', '🧮', 'modules/sexsi-hesab/app.html'],
+    ['sexsiHesabAnaliz', 'Şəxsi hesab → Analiz', '📈', 'modules/sexsi-hesab-analiz/app.html'], ['surucu', 'Sürücü gəliri', '🚚', 'modules/surucu-gelir/app.html'],
+    ['beyannameUcotu', 'Vergi məktubları', '📬', 'modules/beyanname-ucotu/popup.html'], ['beyannameNezaret', 'Bəyannamə nəzarət', '📊', 'modules/beyanname-nezaret/app.html'],
+    ['menfeet', 'Mənfəət', '💰', 'modules/menfeet-html-full/popup.html'], ['links', 'Linklər', '🔗', 'modules/links/links.html'],
+    ['hesabatVaxti', 'Hesabat Vaxtı', '⏰', 'modules/hesabat-vaxti/index.html'], ['borcXatirlatici', 'Borc Xatırladıcı', '💳', 'modules/borc-xatirlatici/dashboard.html'],
+    ['malHereketi', 'Mal Hərəkəti PRO', '📦', 'modules/mal-hereketi-pro/app.html'],
+  ].map(([id, title, icon, url], i) => ({ id, title, icon, url, order: (i + 1) * 10, enabled: true }));
+  const MIME = { html: 'text/html; charset=utf-8', js: 'text/javascript; charset=utf-8', mjs: 'text/javascript; charset=utf-8', css: 'text/css; charset=utf-8', json: 'application/json', png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', svg: 'image/svg+xml', woff: 'font/woff', woff2: 'font/woff2', ttf: 'font/ttf', ico: 'image/x-icon', txt: 'text/plain; charset=utf-8' };
+
+  async function unzip(buf, onEach) {
+    const dv = new DataView(buf.buffer, buf.byteOffset, buf.byteLength), td = new TextDecoder();
+    let eocd = -1; for (let i = buf.length - 22; i >= Math.max(0, buf.length - 70000); i--) if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+    if (eocd < 0) throw new Error('ZIP faylı oxunmadı');
+    const n = dv.getUint16(eocd + 10, true); let p = dv.getUint32(eocd + 16, true);
+    for (let k = 0; k < n; k++) {
+      const method = dv.getUint16(p + 10, true), csize = dv.getUint32(p + 20, true), nl = dv.getUint16(p + 28, true), xl = dv.getUint16(p + 30, true), cl = dv.getUint16(p + 32, true), off = dv.getUint32(p + 42, true);
+      const name = td.decode(buf.subarray(p + 46, p + 46 + nl)); p += 46 + nl + xl + cl;
+      if (name.endsWith('/')) continue;
+      const lnl = dv.getUint16(off + 26, true), lxl = dv.getUint16(off + 28, true), start = off + 30 + lnl + lxl;
+      const raw = buf.subarray(start, start + csize);
+      const data = method === 0 ? raw : new Uint8Array(await new Response(new Blob([raw]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer());
+      await onEach(name.replace(/\\/g, '/'), data, k, n);
+    }
+  }
+  async function suiteVersion() { try { const r = await fetch(SUITE_INFO, { cache: 'no-store' }); return (await r.json()).version || ''; } catch (e) { return ''; } }
+  async function suiteReady() {
+    try { const c = await caches.open(SUITE_CACHE); return !!(await c.match(SUITE_BASE + 'cloud-sync.js')); } catch (e) { return false; }
+  }
+  async function suiteInstall(onProgress, force) {
+    if (!('caches' in window) || typeof DecompressionStream === 'undefined') throw new Error('Bu brauzer panelləri dəstəkləmir — Chrome (Android) və ya Safari 16.4+ (iPhone) istifadə edin');
+    if (!navigator.serviceWorker || !navigator.serviceWorker.controller) { await navigator.serviceWorker?.ready; }
+    const ver = await suiteVersion();
+    const have = localStorage.getItem('ammoSuiteVer') || '';
+    if (!force && have && (ver === '' || ver === have) && await suiteReady()) return have;
+    onProgress && onProgress('AMMO SUITE ' + (ver || '') + ' yüklənir…');
+    const r = await fetch(SUITE_ZIP + '?v=' + encodeURIComponent(ver || Date.now()), { cache: 'no-store' });
+    if (!r.ok) throw new Error('AMMO_SUITE.zip tapılmadı (HTTP ' + r.status + ')');
+    const buf = new Uint8Array(await r.arrayBuffer());
+    await caches.delete(SUITE_CACHE);
+    const cache = await caches.open(SUITE_CACHE);
+    const shim = new URL('chrome-shim.js', location.href.replace(/#.*$/, '')).href;
+    const td = new TextDecoder();
+    await unzip(buf, async (name, data, k, n) => {
+      if (/^AMMO_SUITE_backup\/|\.(exe|txt|md|log)$/i.test(name)) return;
+      const ext = (name.split('.').pop() || '').toLowerCase();
+      let body = data;
+      if (ext === 'html') {
+        let h = td.decode(data);
+        const inj = `<script src="${shim}"></script>` + (/name=["']viewport/i.test(h) ? '' : '<meta name="viewport" content="width=1100">');
+        h = /<head[^>]*>/i.test(h) ? h.replace(/<head[^>]*>/i, (m) => m + inj) : inj + h;
+        body = h;
+      }
+      await cache.put(new Request(SUITE_BASE + name), new Response(body, { headers: { 'Content-Type': MIME[ext] || 'application/octet-stream' } }));
+      if (onProgress && k % 10 === 0) onProgress(`Panellər hazırlanır… ${Math.round((k / n) * 100)}%`);
+    });
+    localStorage.setItem('ammoSuiteVer', ver || 'naməlum');
+    return ver;
+  }
+  async function viewPanels(view) {
+    const ver = localStorage.getItem('ammoSuiteVer') || '';
+    let mods = SUITE_DEFAULT;
+    try {
+      const remote = await cached('suiteModules', () => fs.list('suiteModules'), 300000);
+      if (remote.length) {
+        const byId = new Map(SUITE_DEFAULT.map((m) => [m.id, m]));
+        remote.forEach((m) => byId.set(m.id, { ...(byId.get(m.id) || {}), ...m }));
+        mods = [...byId.values()];
+      }
+    } catch (e) { /* standart siyahı */ }
+    const em = AUTH.email;
+    mods = mods.filter((m) => m.url && /^modules\//.test(m.url) && !/sened-hazirla|edv-analiz|gomruk/.test(m.url))
+      .filter((m) => isAdmin() || (m.enabled !== false && (!(m.allowedEmails || []).length || m.allowedEmails.map((x) => String(x).toLowerCase()).includes(em))))
+      .sort((a, b) => n0(a.order) - n0(b.order));
+    setTitle('AMMO SUITE panelləri', ver ? `Versiya ${ver} · kompüterdəki ilə eyni` : 'Kompüterdəki ilə eyni panellər');
+    view.innerHTML = `<div class="card small muted">Panellər kompüterdəki kimi tam işləyir: əlavə et, düzəliş et, sil, ixrac et. Bütün dəyişikliklər Firebase-ə yazılır və kompüterlərdə dərhal görünür. Ekran kompüter üçündür — iki barmaqla böyüdün; geri qayıtmaq üçün aşağıdakı «‹ AMMO» düyməsi.</div>
+      <div id="pstate"></div>
+      <div class="list">${mods.map((m) => `<div class="item" data-url="${esc(m.url)}"><span style="font-size:22px">${esc(m.icon || '◻')}</span><div class="main"><b>${esc(m.title || m.id)}</b>${m.enabled === false ? '<small>Kompüterlərdə bağlıdır (yalnız admin görür)</small>' : ''}</div><span class="muted">›</span></div>`).join('')}</div>
+      <button class="btn block" id="pReload">⟳ Panelləri yenidən yüklə</button>`;
+    const state = (t, bad) => { $('#pstate').innerHTML = t ? `<div class="card" style="${bad ? 'color:var(--bad)' : ''}">${bad ? '⚠ ' : '<span class="spinner" style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:8px"></span>'}${esc(t)}</div>` : ''; };
+    let busy = false;
+    const open = async (url, force) => {
+      if (busy) return; busy = true;
+      try { await suiteInstall((t) => state(t), force); state(''); if (url) location.href = SUITE_BASE + url; else toast('Panellər yeniləndi', 'ok'); }
+      catch (e) { state(e.message, true); }
+      finally { busy = false; }
+    };
+    $$('[data-url]', view).forEach((el) => el.onclick = () => open(el.dataset.url));
+    $('#pReload').onclick = () => open('', true);
+    if (!(await suiteReady())) open('', false); // ilk dəfə arxa planda hazırla
+  }
+
   // ================================================================== DAHA ÇOX
   async function viewMore(view) {
     setTitle('Daha çox', AUTH.email);
@@ -910,7 +1012,7 @@
   }
   window.addEventListener('hashchange', () => { const id = location.hash.slice(1); if (ME && SECTIONS[id] && id !== current) go(id, { noHash: true }); });
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && ME && ['home', 'tasks', 'remote'].includes(current) && $('#sheet').classList.contains('hidden')) { dropCache('tasks'); go(current, { noHash: true }); } });
-  if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) navigator.serviceWorker.register('sw.js').catch(() => {});
   start();
 
   // test üçün
