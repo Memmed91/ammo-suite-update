@@ -1,0 +1,17 @@
+{
+  "name": "AMMO Mobil",
+  "short_name": "AMMO",
+  "description": "AMMO SUITE və AMMO (Vergi) — telefondan nəzarət paneli",
+  "lang": "az",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f6f8",
+  "theme_color": "#0d1b33",
+  "icons": [
+    { "src": "icons/icon192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
