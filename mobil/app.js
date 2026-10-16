@@ -15,7 +15,7 @@
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNfq2z5uxaU1CLxjGG1gVS1K1FaiRA5dFKvmUkzDNGRz1f2qsHOVdFu3-sy4zygkZN/exec';
   const BASE = `https://firestore.googleapis.com/v1/projects/${FB.projectId}/databases/(default)/documents`;
   const AUTH_KEY = 'ammoMobAuth';
-  const VERSION = '1.1.0';
+  const VERSION = '1.2.0';
 
   // ------------------------------------------------------------------ köməkçilər
   const $ = (s, r = document) => r.querySelector(s);
@@ -868,10 +868,13 @@
   // Kompüterdəki AMMO SUITE-in eyni panelləri: GitHub-dakı AMMO_SUITE.zip telefona bir dəfə yüklənir
   // (yeni versiya çıxanda özü yenilənir), chrome-shim.js genişlənmə API-lərini əvəz edir, məlumat
   // cloud-sync.js ilə eyni Firebase-dən gəlir və ora yazılır — kompüterlərdə dərhal görünür.
-  const SUITE_BASE = new URL('suite/', location.href.replace(/#.*$/, '')).href;
-  const SUITE_ZIP = new URL('../AMMO_SUITE.zip', location.href.replace(/#.*$/, '')).href;
-  const SUITE_INFO = new URL('../update.json', location.href.replace(/#.*$/, '')).href;
-  const SUITE_CACHE = 'ammo-suite-files';
+  const APP_URL = location.href.replace(/#.*$/, '');
+  // İki paket: AMMO SUITE (GitHub: AMMO_SUITE.zip) və AMMO — Vergi xidmətləri (GitHub: ammo-vergi/AMMO.zip)
+  const PKGS = {
+    suite: { name: 'AMMO SUITE', base: new URL('suite/', APP_URL).href, zip: new URL('../AMMO_SUITE.zip', APP_URL).href, info: new URL('../update.json', APP_URL).href, cache: 'ammo-suite-files', verKey: 'ammoSuiteVer', probe: 'cloud-sync.js', strip: '', skip: /^AMMO_SUITE_backup\/|\.(exe|txt|md|log)$/i },
+    ammo: { name: 'AMMO (Vergi)', base: new URL('ammo/', APP_URL).href, zip: new URL('../ammo-vergi/AMMO.zip', APP_URL).href, info: new URL('../ammo-vergi/update.json', APP_URL).href, cache: 'ammo-vergi-files', verKey: 'ammoVergiVer', probe: 'lib/ammo-cloud.js', strip: 'AMMO/', skip: /\.(exe|txt|md|log)$|^content\/|^background\.js$/i },
+  };
+  const SUITE_BASE = PKGS.suite.base;
   const SUITE_DEFAULT = [
     ['taskpanel', 'TaskPanel', '✅', 'modules/taskpanel/index.html'], ['emekhaqqi', 'Əməkhaqqı', '💼', 'modules/emekhaqqi/app.html'],
     ['kurs', 'Kurs İdarəetmə', '🎓', 'modules/kurs/app.html'], ['sexsiHesab', 'Şəxsi hesab → Borc', '🧮', 'modules/sexsi-hesab/app.html'],
@@ -881,6 +884,12 @@
     ['hesabatVaxti', 'Hesabat Vaxtı', '⏰', 'modules/hesabat-vaxti/index.html'], ['borcXatirlatici', 'Borc Xatırladıcı', '💳', 'modules/borc-xatirlatici/dashboard.html'],
     ['malHereketi', 'Mal Hərəkəti PRO', '📦', 'modules/mal-hereketi-pro/app.html'],
   ].map(([id, title, icon, url], i) => ({ id, title, icon, url, order: (i + 1) * 10, enabled: true }));
+  // AMMO (Vergi) — telefonda işləyən səhifələri (qalanları e-taxes kabinetinin içində işləyir → «e-taxes» əmrləri)
+  const AMMO_PAGES = [
+    { id: 'dovriyye', title: 'Sənəd dövriyyəsi', icon: '🗂', url: 'pages/dovriyye.html', note: 'Arxiv, fayllar, axtarış, yeni sənəd' },
+    { id: 'sened', title: 'Sənəd hazırla', icon: '🧾', url: 'pages/sened.html', note: 'Müqavilə, akt, ərizə şablonları — PDF/Word' },
+    { id: 'admin', title: 'AMMO İdarəetmə paneli', icon: '⚙', url: 'pages/admin.html', note: 'Panellər, istifadəçilər, yeniləmə', admin: true },
+  ];
   const MIME = { html: 'text/html; charset=utf-8', js: 'text/javascript; charset=utf-8', mjs: 'text/javascript; charset=utf-8', css: 'text/css; charset=utf-8', json: 'application/json', png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', svg: 'image/svg+xml', woff: 'font/woff', woff2: 'font/woff2', ttf: 'font/ttf', ico: 'image/x-icon', txt: 'text/plain; charset=utf-8' };
 
   async function unzip(buf, onEach) {
@@ -898,26 +907,29 @@
       await onEach(name.replace(/\\/g, '/'), data, k, n);
     }
   }
-  async function suiteVersion() { try { const r = await fetch(SUITE_INFO, { cache: 'no-store' }); return (await r.json()).version || ''; } catch (e) { return ''; } }
-  async function suiteReady() {
-    try { const c = await caches.open(SUITE_CACHE); return !!(await c.match(SUITE_BASE + 'cloud-sync.js')); } catch (e) { return false; }
+  async function pkgVersion(P) {
+    try { const r = await fetch(P.info, { cache: 'no-store' }); if (r.ok) { const v = (await r.json()).version; if (v) return v; } } catch (e) { /* */ }
+    try { const h = await fetch(P.zip, { method: 'HEAD', cache: 'no-store' }); if (h.ok) return 'z' + (h.headers.get('etag') || h.headers.get('last-modified') || h.headers.get('content-length') || '').replace(/[^A-Za-z0-9]/g, '').slice(-24); } catch (e) { /* */ }
+    return '';
   }
-  async function suiteInstall(onProgress, force) {
+  async function pkgReady(P) { try { const c = await caches.open(P.cache); return !!(await c.match(P.base + P.probe)); } catch (e) { return false; } }
+  async function pkgInstall(P, onProgress, force) {
     if (!('caches' in window) || typeof DecompressionStream === 'undefined') throw new Error('Bu brauzer panelləri dəstəkləmir — Chrome (Android) və ya Safari 16.4+ (iPhone) istifadə edin');
-    if (!navigator.serviceWorker || !navigator.serviceWorker.controller) { await navigator.serviceWorker?.ready; }
-    const ver = await suiteVersion();
-    const have = localStorage.getItem('ammoSuiteVer') || '';
-    if (!force && have && (ver === '' || ver === have) && await suiteReady()) return have;
-    onProgress && onProgress('AMMO SUITE ' + (ver || '') + ' yüklənir…');
-    const r = await fetch(SUITE_ZIP + '?v=' + encodeURIComponent(ver || Date.now()), { cache: 'no-store' });
-    if (!r.ok) throw new Error('AMMO_SUITE.zip tapılmadı (HTTP ' + r.status + ')');
+    if (navigator.serviceWorker && !navigator.serviceWorker.controller) await navigator.serviceWorker.ready;
+    const ver = await pkgVersion(P);
+    const have = localStorage.getItem(P.verKey) || '';
+    if (!force && have && (ver === '' || ver === have) && await pkgReady(P)) return have;
+    onProgress && onProgress(P.name + ' yüklənir…');
+    const r = await fetch(P.zip + '?v=' + encodeURIComponent(ver || Date.now()), { cache: 'no-store' });
+    if (!r.ok) throw new Error(P.name + ' paketi serverdə tapılmadı (HTTP ' + r.status + ')');
     const buf = new Uint8Array(await r.arrayBuffer());
-    await caches.delete(SUITE_CACHE);
-    const cache = await caches.open(SUITE_CACHE);
-    const shim = new URL('chrome-shim.js', location.href.replace(/#.*$/, '')).href;
+    await caches.delete(P.cache);
+    const cache = await caches.open(P.cache);
+    const shim = new URL('chrome-shim.js', APP_URL).href;
     const td = new TextDecoder();
-    await unzip(buf, async (name, data, k, n) => {
-      if (/^AMMO_SUITE_backup\/|\.(exe|txt|md|log)$/i.test(name)) return;
+    await unzip(buf, async (full, data, k, n) => {
+      const name = P.strip && full.startsWith(P.strip) ? full.slice(P.strip.length) : full;
+      if (P.skip.test(name)) return;
       const ext = (name.split('.').pop() || '').toLowerCase();
       let body = data;
       if (ext === 'html') {
@@ -926,14 +938,14 @@
         h = /<head[^>]*>/i.test(h) ? h.replace(/<head[^>]*>/i, (m) => m + inj) : inj + h;
         body = h;
       }
-      await cache.put(new Request(SUITE_BASE + name), new Response(body, { headers: { 'Content-Type': MIME[ext] || 'application/octet-stream' } }));
-      if (onProgress && k % 10 === 0) onProgress(`Panellər hazırlanır… ${Math.round((k / n) * 100)}%`);
+      await cache.put(new Request(P.base + name), new Response(body, { headers: { 'Content-Type': MIME[ext] || 'application/octet-stream' } }));
+      if (onProgress && k % 10 === 0) onProgress(`${P.name} hazırlanır… ${Math.round((k / n) * 100)}%`);
     });
-    localStorage.setItem('ammoSuiteVer', ver || 'naməlum');
+    localStorage.setItem(P.verKey, ver || 'naməlum');
     return ver;
   }
   async function viewPanels(view) {
-    const ver = localStorage.getItem('ammoSuiteVer') || '';
+    const ver = localStorage.getItem(PKGS.suite.verKey) || '';
     let mods = SUITE_DEFAULT;
     try {
       const remote = await cached('suiteModules', () => fs.list('suiteModules'), 300000);
@@ -947,22 +959,32 @@
     mods = mods.filter((m) => m.url && /^modules\//.test(m.url) && !/sened-hazirla|edv-analiz|gomruk/.test(m.url))
       .filter((m) => isAdmin() || (m.enabled !== false && (!(m.allowedEmails || []).length || m.allowedEmails.map((x) => String(x).toLowerCase()).includes(em))))
       .sort((a, b) => n0(a.order) - n0(b.order));
-    setTitle('AMMO SUITE panelləri', ver ? `Versiya ${ver} · kompüterdəki ilə eyni` : 'Kompüterdəki ilə eyni panellər');
-    view.innerHTML = `<div class="card small muted">Panellər kompüterdəki kimi tam işləyir: əlavə et, düzəliş et, sil, ixrac et. Bütün dəyişikliklər Firebase-ə yazılır və kompüterlərdə dərhal görünür. Ekran kompüter üçündür — iki barmaqla böyüdün; geri qayıtmaq üçün aşağıdakı «‹ AMMO» düyməsi.</div>
+    let ammoConf = null; try { ammoConf = await cached('ammoConf', getAmmoConf, 300000); } catch (e) { /* */ }
+    const ammoPages = AMMO_PAGES.filter((p) => isAdmin() || (!p.admin && !((ammoConf && ammoConf.panels && ammoConf.panels[p.id]) || {}).off));
+    setTitle('Panellər', ver ? `AMMO SUITE ${ver} · kompüterdəki ilə eyni` : 'Kompüterdəki ilə eyni panellər');
+    const row = (pkg, m) => `<div class="item" data-pkg="${pkg}" data-url="${esc(m.url)}"><span style="font-size:22px">${esc(m.icon || '◻')}</span><div class="main"><b>${esc(m.title || m.id)}</b>${m.enabled === false ? '<small>Kompüterlərdə bağlıdır (yalnız admin görür)</small>' : m.note ? `<small>${esc(m.note)}</small>` : ''}</div><span class="muted">›</span></div>`;
+    view.innerHTML = `<div class="card small muted">Panellər kompüterdəki kimi tam işləyir: əlavə et, düzəliş et, sil, ixrac et. Dəyişikliklər Firebase-ə yazılır və kompüterlərdə dərhal görünür. Ekran kompüter üçündür — iki barmaqla böyüdün; geri qayıtmaq üçün aşağıdakı «‹ AMMO» düyməsi.</div>
       <div id="pstate"></div>
-      <div class="list">${mods.map((m) => `<div class="item" data-url="${esc(m.url)}"><span style="font-size:22px">${esc(m.icon || '◻')}</span><div class="main"><b>${esc(m.title || m.id)}</b>${m.enabled === false ? '<small>Kompüterlərdə bağlıdır (yalnız admin görür)</small>' : ''}</div><span class="muted">›</span></div>`).join('')}</div>
+      <div class="sec-title">AMMO SUITE</div>
+      <div class="list">${mods.map((m) => row('suite', m)).join('')}</div>
+      <div class="sec-title">AMMO — Vergi xidmətləri</div>
+      <div class="list">${ammoPages.map((m) => row('ammo', m)).join('')}</div>
+      <p class="muted small">Qaimələr, bəyannamələr, İlkin audit, ƏDV əvəzləşməsi, bank çıxarışı kimi panellər e-taxes kabinetinin içində işləyir — telefondan onları «🛰 e-taxes» bölməsindən əmr kimi göndərin.</p>
       <button class="btn block" id="pReload">⟳ Panelləri yenidən yüklə</button>`;
     const state = (t, bad) => { $('#pstate').innerHTML = t ? `<div class="card" style="${bad ? 'color:var(--bad)' : ''}">${bad ? '⚠ ' : '<span class="spinner" style="display:inline-block;width:16px;height:16px;vertical-align:-3px;margin-right:8px"></span>'}${esc(t)}</div>` : ''; };
     let busy = false;
-    const open = async (url, force) => {
+    const open = async (pkg, url, force) => {
       if (busy) return; busy = true;
-      try { await suiteInstall((t) => state(t), force); state(''); if (url) location.href = SUITE_BASE + url; else toast('Panellər yeniləndi', 'ok'); }
-      catch (e) { state(e.message, true); }
+      try {
+        if (pkg) { await pkgInstall(PKGS[pkg], (t) => state(t), force); state(''); location.href = PKGS[pkg].base + url; return; }
+        for (const k of Object.keys(PKGS)) { try { await pkgInstall(PKGS[k], (t) => state(t), force); } catch (e) { if (k === 'suite') throw e; state(e.message, true); await new Promise((r) => setTimeout(r, 2500)); } }
+        state(''); toast('Panellər hazırdır', 'ok');
+      } catch (e) { state(e.message, true); }
       finally { busy = false; }
     };
-    $$('[data-url]', view).forEach((el) => el.onclick = () => open(el.dataset.url));
-    $('#pReload').onclick = () => open('', true);
-    if (!(await suiteReady())) open('', false); // ilk dəfə arxa planda hazırla
+    $$('[data-url]', view).forEach((el) => el.onclick = () => open(el.dataset.pkg, el.dataset.url));
+    $('#pReload').onclick = () => open('', '', true);
+    if (!(await pkgReady(PKGS.suite)) || !(await pkgReady(PKGS.ammo))) open('', '', false); // ilk dəfə arxa planda hazırla
   }
 
   // ================================================================== DAHA ÇOX

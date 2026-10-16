@@ -11,7 +11,8 @@
 
   const SHIM_URL = (document.currentScript && document.currentScript.src) || '';
   const ROOT = SHIM_URL ? SHIM_URL.replace(/chrome-shim\.js.*$/, '') : location.href.replace(/suite\/.*$/, ''); // .../mobil/
-  const SUITE = ROOT + 'suite/';
+  const IS_AMMO = /\/ammo\//.test(location.pathname);       // AMMO (Vergi) səhifələri
+  const SUITE = ROOT + (IS_AMMO ? 'ammo/' : 'suite/');
   const AUTH_KEY = 'ammoMobAuth';
 
   // ------------------------------------------------------------------ yaddaş (IndexedDB)
@@ -37,7 +38,7 @@
     // AMMO Mobil girişi = AMMO SUITE girişi
     try {
       const a = JSON.parse(localStorage.getItem(AUTH_KEY) || 'null');
-      if (a && a.idToken) m.set('suiteAuth', { ...(m.get('suiteAuth') || {}), ...a });
+      if (a && a.idToken) { m.set('suiteAuth', { ...(m.get('suiteAuth') || {}), ...a }); m.set('ammoAuth', { ...(m.get('ammoAuth') || {}), ...a, at: Date.now() }); }
     } catch (e) { /* */ }
     mem = m;
   })();
@@ -83,7 +84,7 @@
         await ready; const changes = {}, set = [];
         for (const [k, v] of Object.entries(items || {})) {
           const nv = clone(v); changes[k] = { oldValue: mem.get(k), newValue: nv }; mem.set(k, nv); set.push([k, nv]);
-          if (k === 'suiteAuth' && nv && nv.idToken) { try { const cur = JSON.parse(localStorage.getItem(AUTH_KEY) || '{}'); localStorage.setItem(AUTH_KEY, JSON.stringify({ ...cur, idToken: nv.idToken, refreshToken: nv.refreshToken || cur.refreshToken, uid: nv.uid || cur.uid, expiresAt: nv.expiresAt || cur.expiresAt, email: nv.email || cur.email })); } catch (e) { /* */ } }
+          if ((k === 'suiteAuth' || k === 'ammoAuth') && nv && nv.idToken) { try { const cur = JSON.parse(localStorage.getItem(AUTH_KEY) || '{}'); localStorage.setItem(AUTH_KEY, JSON.stringify({ ...cur, idToken: nv.idToken, refreshToken: nv.refreshToken || cur.refreshToken, uid: nv.uid || cur.uid, expiresAt: nv.expiresAt || cur.expiresAt, email: nv.email || cur.email })); } catch (e) { /* */ } }
         }
         await persist(set, []); emit(changes);
       })(), cb);
@@ -91,11 +92,11 @@
     remove(keys, cb) {
       return cbify((async () => {
         await ready; const changes = {}, del = [];
-        for (const k of [].concat(keys || [])) { if (k === 'suiteAuth') continue; if (mem.has(k)) { changes[k] = { oldValue: mem.get(k) }; mem.delete(k); del.push(k); } }
+        for (const k of [].concat(keys || [])) { if (k === 'suiteAuth' || k === 'ammoAuth') continue; if (mem.has(k)) { changes[k] = { oldValue: mem.get(k) }; mem.delete(k); del.push(k); } }
         await persist([], del); emit(changes);
       })(), cb);
     },
-    clear(cb) { return cbify((async () => { await ready; const keys = [...mem.keys()].filter((k) => k !== 'suiteAuth'); return local.remove(keys); })(), cb); },
+    clear(cb) { return cbify((async () => { await ready; const keys = [...mem.keys()].filter((k) => k !== 'suiteAuth' && k !== 'ammoAuth'); return local.remove(keys); })(), cb); },
     getBytesInUse(k, cb) { return cbify(Promise.resolve(0), cb); },
   };
 
@@ -110,6 +111,17 @@
       catch (e) { return { success: false, error: String(e.message || e) }; }
     }
     if (t === 'gmail-status') return { connected: false };
+    if (t === 'AMMO_NET' && msg.req) { // AMMO (Vergi): Firebase sorğuları fon skripti əvəzinə birbaşa
+      const q = msg.req; const init = { method: q.method || 'GET', headers: q.headers || {}, cache: 'no-store' };
+      if (q.body != null) init.body = typeof q.body === 'string' ? q.body : JSON.stringify(q.body);
+      try {
+        const res = await fetch(q.url, init); const text = await res.text(); let json = null; try { json = text ? JSON.parse(text) : null; } catch (e) { /* mətn */ }
+        return { ok: res.ok, status: res.status, json, text: json ? '' : text.slice(0, 4000) };
+      } catch (e) { return { error: String(e.message || e) }; }
+    }
+    if (t === 'AMMO_OPEN_PAGE' && msg.page) { location.href = SUITE + String(msg.page).replace(/^\//, '') + (msg.query ? '?' + msg.query : ''); return { ok: true }; }
+    if (t === 'AMMO_OPEN_URL' && msg.url) { openUrl(msg.url); return { ok: true }; }
+    if (t === 'AMMO_CLOUD_CHANGED') return { ok: true };
     if (t === 'AMMO_FLUSH_NOW') return { ok: true };
     return { ok: false, error: 'Bu əməliyyat yalnız kompüterdəki AMMO SUITE-də işləyir' };
   }
@@ -120,7 +132,7 @@
     runtime: {
       id: 'ammo-mobil-web', lastError: undefined,
       getURL(p) { p = String(p || '').replace(/^\//, ''); if (p === 'suite.html' || p.startsWith('suite.html')) return ROOT + '#panels'; return SUITE + p; },
-      getManifest() { return { version: 'mobil', name: 'AMMO SUITE (mobil)', manifest_version: 3 }; },
+      getManifest() { return { version: 'mobil', name: IS_AMMO ? 'AMMO (mobil)' : 'AMMO SUITE (mobil)', manifest_version: 3 }; },
       sendMessage(msg, a, b) { const cb = typeof a === 'function' ? a : b; return cbify(sendMessage(msg), cb); },
       getPlatformInfo(cb) { return cbify(Promise.resolve({ os: /Android/i.test(navigator.userAgent) ? 'android' : /iPhone|iPad/.test(navigator.userAgent) ? 'ios' : 'win', arch: 'arm' }), cb); },
       onMessage: noopEvent(), onInstalled: noopEvent(), onStartup: noopEvent(), connect() { return { postMessage() {}, onMessage: noopEvent(), onDisconnect: noopEvent(), disconnect() {} }; },
@@ -141,7 +153,8 @@
     },
     notifications: { create(id, o, cb) { if (typeof id === 'object') cb = o; return cbify(Promise.resolve('n'), cb); }, clear(id, cb) { return cbify(Promise.resolve(true), cb); }, getAll(cb) { return cbify(Promise.resolve({}), cb); }, onClicked: noopEvent(), onButtonClicked: noopEvent() },
     alarms: { create() {}, clear(n, cb) { return cbify(Promise.resolve(true), cb); }, get(n, cb) { return cbify(Promise.resolve(null), cb); }, onAlarm: noopEvent() },
-    identity: { getAuthToken(o, cb) { const p = Promise.reject(new Error('Gmail girişi telefonda yoxdur')); if (cb) { p.catch(() => cb()); return; } return p; }, removeCachedAuthToken(o, cb) { return cbify(Promise.resolve(), cb); }, clearAllCachedAuthTokens(cb) { return cbify(Promise.resolve(), cb); }, getProfileUserInfo(o, cb) { if (typeof o === 'function') cb = o; return cbify(Promise.resolve({ email: '' }), cb); } },
+    extension: { isAllowedFileSchemeAccess(cb) { return cbify(Promise.resolve(false), cb); }, getURL(p) { return SUITE + String(p || '').replace(/^\//, ''); } },
+    identity: { getRedirectURL() { return ''; }, getAuthToken(o, cb) { const p = Promise.reject(new Error('Gmail girişi telefonda yoxdur')); if (cb) { p.catch(() => cb()); return; } return p; }, removeCachedAuthToken(o, cb) { return cbify(Promise.resolve(), cb); }, clearAllCachedAuthTokens(cb) { return cbify(Promise.resolve(), cb); }, getProfileUserInfo(o, cb) { if (typeof o === 'function') cb = o; return cbify(Promise.resolve({ email: '' }), cb); } },
     scripting: { executeScript() { return Promise.reject(new Error('Telefonda mümkün deyil')); } },
     action: { onClicked: noopEvent(), setBadgeText() {}, setBadgeBackgroundColor() {} },
   });
