@@ -1,10 +1,10 @@
 {
   "date": "2026-10-17",
-  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.2.0",
+  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.3.0",
   "notes": [
-    "Admin: hər panelin «⚙ İdarə et» bölməsi — məlumat sayı, ehtiyat surəti",
-    "Admin: «🗑 Hamısını sil» — 2 dəfə təsdiqlə panelin bütün məlumatını buluddan və bütün kompüterlərdən silir"
+    "Vergi məktubları: «Yenilə» basanda yalnız OXUNMAMIŞ məktublar düşür (kabinetdə qara olanlar)",
+    "Oxunmuş (boz) məktublar artıq AMMO-ya düşmür"
   ],
-  "sha256": "38fcac2de2aceb19b07d24b8f9566b581eecb19f55cdcc8a519b0dca414857ee",
-  "version": "31.2.0"
+  "sha256": "31a4004a73c75c15e6a0f12ce543f13f46c86a6a8e9a7aaa6ecaed566fb0aabc",
+  "version": "31.3.0"
 }
