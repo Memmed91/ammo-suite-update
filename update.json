@@ -1,10 +1,10 @@
 {
-  "date": "2026-10-15",
-  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.1.0",
+  "date": "2026-10-17",
+  "download_url": "https://memmed91.github.io/ammo-suite-update/AMMO_SUITE.zip?v=31.2.0",
   "notes": [
-    "Yeni panel: Şəxsi hesab → Analiz — borc, faiz, ödənişlərin hara getdiyi, uyğunsuzluqlar, köməkçi",
-    "Menyuda Şəxsi hesab vərəqəsi: üzərinə gələndə Borc və Analiz açılır"
+    "Admin: hər panelin «⚙ İdarə et» bölməsi — məlumat sayı, ehtiyat surəti",
+    "Admin: «🗑 Hamısını sil» — 2 dəfə təsdiqlə panelin bütün məlumatını buluddan və bütün kompüterlərdən silir"
   ],
-  "sha256": "d5e95b0dd0ac1c57d110562f5bfb984570b56ba1a70a21460019820d18f0306f",
-  "version": "31.1.0"
+  "sha256": "38fcac2de2aceb19b07d24b8f9566b581eecb19f55cdcc8a519b0dca414857ee",
+  "version": "31.2.0"
 }
