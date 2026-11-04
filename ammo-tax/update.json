@@ -1,11 +1,12 @@
 {
-  "version": "31.4.0",
-  "url": "https://memmed91.github.io/ammo-suite-update/ammo-tax/AMMO_TAX%20(2).zip",
-  "download_url": "https://memmed91.github.io/ammo-suite-update/ammo-tax/AMMO_TAX%20(2).zip",
-  "sha256": "80a51c4c96cb78ddd5b36fb2587f8394762ec88f986c24e2e5c4e0ce57a3cb2e",
+  "version": "31.6.9",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.6.9/AMMO.TAX.Setup.31.6.9.exe",
+  "url": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.6.9/AMMO.TAX.Setup.31.6.9.exe",
+  "sha256": "34670b91e42481e7229b0454f257a21c348963c2614838121f15ab61b7293cac",
   "notes": [
-    "AMMO TAX ilk buraxılış — lisenziya sistemi, admin paneli, kod qorunması"
+    "Avtomatik yenilenme: yeni versiya 1 deqiqeye ozu qurasdirilir",
+    "Lisenziya avadanliqdan taninir; admin nezareti <=30 san; AMMO PRO panelleri; backup"
   ],
   "date": "2026-11-04",
-  "page": "https://memmed91.github.io/ammo-suite-update/ammo-tax/"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
