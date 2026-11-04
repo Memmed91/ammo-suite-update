@@ -1,12 +1,9 @@
 {
-  "version": "31.6.9",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.6.9/AMMO.TAX.Setup.31.6.9.exe",
-  "url": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.6.9/AMMO.TAX.Setup.31.6.9.exe",
-  "sha256": "34670b91e42481e7229b0454f257a21c348963c2614838121f15ab61b7293cac",
-  "notes": [
-    "Avtomatik yenilenme: yeni versiya 1 deqiqeye ozu qurasdirilir",
-    "Lisenziya avadanliqdan taninir; admin nezareti <=30 san; AMMO PRO panelleri; backup"
-  ],
-  "date": "2026-11-04",
+  "version": "31.7.1",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.7.1/AMMO_TAX_Setup_31.7.1.exe",
+  "url": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.7.1/AMMO_TAX_Setup_31.7.1.exe",
+  "sha256": "431a3bc89ab3a489b75c5a33ecb5e76b9d23324fd685b7566cdf916ab685b76f",
+  "notes": ["Melumat tecridi kokunden: Vergi mektublari ve Beyanname nezaret panelleri de artiq her sirketin ayri bazasinda - bir sirket basqasinin bazasini gore bilmez", "Admin panelde Butun datani sifirla dugmesi (mehsulu tam temiz/bos edir)", "Komputerler arasi sinxron her sirket ucun duzeldildi"],
+  "date": "2026-11-05",
   "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
