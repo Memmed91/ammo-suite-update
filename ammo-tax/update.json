@@ -1,9 +1,9 @@
 {
-  "version": "31.7.1",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.7.1/AMMO_TAX_Setup_31.7.1.exe",
-  "url": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.7.1/AMMO_TAX_Setup_31.7.1.exe",
-  "sha256": "431a3bc89ab3a489b75c5a33ecb5e76b9d23324fd685b7566cdf916ab685b76f",
-  "notes": ["Melumat tecridi kokunden: Vergi mektublari ve Beyanname nezaret panelleri de artiq her sirketin ayri bazasinda - bir sirket basqasinin bazasini gore bilmez", "Admin panelde Butun datani sifirla dugmesi (mehsulu tam temiz/bos edir)", "Komputerler arasi sinxron her sirket ucun duzeldildi"],
+  "version": "31.7.3",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.7.3/AMMO_TAX_Setup_31.7.3.exe",
+  "url": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.7.3/AMMO_TAX_Setup_31.7.3.exe",
+  "sha256": "7baa76a7e285fa49ce7a088b55f917d6c0f538b6fabba9d7aad217a904078298",
+  "notes": ["Surucu geliri: xidmet haqqi avtomatik tutulmur (vuranda tutulur, qaliq tutulmaz)", "Ayarlarda ad deyismek/silmek derhal saxlanir", "Avtomatik yenileme EPERM duzelisi", "Melumat tecridi + Butun datani sifirla"],
   "date": "2026-11-05",
   "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
