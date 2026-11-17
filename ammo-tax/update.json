@@ -1,13 +1,1 @@
-{
-  "version": "31.8.0",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.8.0/AMMO-TAX-Update-31.8.0.exe",
-  "url": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.8.0/AMMO-TAX-Update-31.8.0.exe",
-  "sha256": "a7c1b111a3526be7af4bde8ed4fa02f80d00c0727fd62eac32f6315627453e99",
-  "notes": [
-    "Gomruk bolmesi: Gomruk auditi, Senedler, Xeberdarliq, Gomruk xercleri, Mallarin hereketi",
-    "Sexsi hesab Borc ve Analiz: iki tarix + Doldur avtomatik",
-    "Emek haqqi: Doldur EMAS-dan avtomatik"
-  ],
-  "date": "2026-11-15",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
-}
+{"version": "31.16.1", "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.1/app.asar", "asarSha256": "25071733db2d52ce679acaeb0e28d431e42b40fa3702b2c72af8d8b62c779aae", "notes": ["Gomruk auditi: Satilan mallarin maya deyeri invoys esasli (vergi ucotu)", "Sirket profili: fealiyyet kod ve ad; kassa, POS, obyekt statuslari", "Daxil olan pullar: rublerin altinda aylar", "Avtomatik yenilenme berpa edildi (asar usulu)"], "date": "2026-11-18", "page": "https://github.com/Memmed91/ammo-suite-update/releases"}
