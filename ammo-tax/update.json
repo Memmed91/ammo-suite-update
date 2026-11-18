@@ -1,11 +1,11 @@
 {
-  "version": "31.16.4",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.4/app.asar",
-  "asarSha256": "bda4af45b79e1d1e0fc5832680b8c596edc2ea75279ecc73810b04fc513982a3",
+  "version": "31.16.5",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.5/app.asar",
+  "asarSha256": "281898e26b958436202ff01ab39124dc1c0d2ff232ad2bc5073afabab572cd69",
   "notes": [
-    "Tek nusxe: proqram ikinci defe acilanda yeni nusxe yaranmir, movcud pencere one gelir",
-    "Gizli qalan artiq nusxeler temizlenir (Firebase limiti ve yenilenme ucun)",
-    "Firebase oxumalari ~10 defe azaldildi; xetada tedricen yavaslama"
+    "Yenilenme etibarliligi: fayl tutulu olanda da (ad deyisme alinmasa) ustunden kopyalanir ve bayt-bayt yoxlanir",
+    "Qaliq fayllar (pending, komekci .vbs/.bat) avtomatik temizlenir",
+    "Tek nusxe; Firebase oxumalari ~10 defe az"
   ],
   "date": "2026-11-18",
   "page": "https://github.com/Memmed91/ammo-suite-update/releases"
