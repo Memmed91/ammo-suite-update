@@ -8,6 +8,12 @@ name: AMMO TAX asar yayimi
 on:
   release:
     types: [published]
+  # əl ilə təkrar işə salmaq üçün (məs. quraşdırıcını yenidən yığmaq): Actions → Run workflow → tag
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (mes. v31.16.9)'
+        required: true
 
 permissions:
   contents: write
@@ -28,7 +34,7 @@ jobs:
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ github.event.release.tag_name }}
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
           REPO: ${{ github.repository }}
         run: |
           set -eu
@@ -91,7 +97,7 @@ jobs:
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ github.event.release.tag_name }}
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
           REPO: ${{ github.repository }}
         run: |
           set -eu
@@ -104,10 +110,11 @@ jobs:
           cd app
           ls -la
           # pəncərə ikonu (build/icon.png) də paketə düşsün
-          jq '.build.files += ["build/icon.png"]' package.json > p.json && mv p.json package.json
+          jq --arg r "$REPO" '.build.files += ["build/icon.png"] | .build.publish = {provider: "generic", url: ("https://github.com/" + $r + "/releases/latest/download")}' package.json > p.json && mv p.json package.json
           npm install --no-save --no-audit --no-fund electron@33.2.1 electron-builder@25.1.8
-          npx electron-builder --win nsis --x64 --publish never
-          EXE="$(ls dist/*.exe | head -1)"
+          npx electron-builder --win nsis --x64 --publish never || echo "electron-builder xeberdarliqla bitdi - qurasdirici yoxlanilir"
+          EXE="$(ls dist/AMMO\ TAX\ Setup\ *.exe 2>/dev/null | head -1 || true)"
+          if [ -z "$EXE" ] || [ ! -f "$EXE" ]; then echo "Qurasdirici yaranmadi"; exit 1; fi
           OUT="AMMO-TAX-Setup-$VER.exe"
           cp "$EXE" "$W/$OUT"
           cd "$W"
