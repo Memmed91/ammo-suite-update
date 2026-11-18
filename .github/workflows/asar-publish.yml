@@ -1,0 +1,75 @@
+name: AMMO TAX asar yayimi
+
+# Release dərc olunanda işləyir:
+#  - release-də app.asar.part1..N varsa — birləşdirir (brauzer yükləmə limiti 10 MB olduğu üçün hissələrlə yüklənir)
+#  - release mətnindəki "sha256: ..." ilə yoxlayır (uyğun deyilsə dayanır, feed dəyişmir)
+#  - app.asar-ı release-ə qoyur, hissələri silir
+#  - ammo-tax/update.json-u yeni versiyaya yönəldir → bütün kompüterlər ≤1 dəqiqəyə özü yenilənir
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ammo-tax-feed
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Hisseleri birlesdir, yoxla, update.json-u yenile
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -eu
+          VER="${TAG#v}"
+          WORK="$(mktemp -d)"
+          cd "$WORK"
+          gh release download "$TAG" -R "$REPO" -p 'app.asar*' || true
+          ls -la
+          HAVE_PARTS=0
+          if ls app.asar.part* >/dev/null 2>&1; then
+            HAVE_PARTS=1
+            cat $(ls app.asar.part* | sort -V) > app.asar
+          fi
+          if [ ! -f app.asar ]; then
+            echo "Bu release-de app.asar ve ya hisseleri yoxdur — kecilir."
+            exit 0
+          fi
+          SIZE=$(stat -c%s app.asar)
+          SHA=$(sha256sum app.asar | cut -d' ' -f1)
+          BODY="$(gh release view "$TAG" -R "$REPO" --json body -q .body || true)"
+          EXP="$(printf '%s\n' "$BODY" | grep -oiE 'sha256:[[:space:]]*[0-9a-f]{64}' | grep -oiE '[0-9a-f]{64}' | head -1 || true)"
+          echo "size=$SIZE sha=$SHA expected=${EXP:-yoxdur}"
+          if [ "$SIZE" -lt 1000000 ]; then echo "Fayl cox kicikdir — dayandi."; exit 1; fi
+          if [ -n "$EXP" ] && [ "$(printf '%s' "$EXP" | tr 'A-F' 'a-f')" != "$SHA" ]; then
+            echo "SHA256 UYGUN DEYIL — feed deyisdirilmedi."; exit 1
+          fi
+          if [ "$HAVE_PARTS" = "1" ]; then
+            gh release upload "$TAG" app.asar -R "$REPO" --clobber
+            for p in app.asar.part*; do gh release delete-asset "$TAG" "$p" -R "$REPO" -y || true; done
+          fi
+          URL="https://github.com/$REPO/releases/download/$TAG/app.asar"
+          printf '%s\n' "$BODY" | grep -viE '^[[:space:]]*sha256:' | sed '/^[[:space:]]*$/d' > notes.txt || true
+          NOTES="$(jq -R . notes.txt | jq -s .)"
+          cd "$GITHUB_WORKSPACE"
+          mkdir -p ammo-tax
+          jq -n --arg v "$VER" --arg u "$URL" --arg s "$SHA" --arg d "$(date -u +%F)" \
+                --arg p "https://github.com/$REPO/releases" --argjson n "$NOTES" \
+                '{version:$v, asar:$u, asarSha256:$s, notes:$n, date:$d, page:$p}' > ammo-tax/update.json
+          cat ammo-tax/update.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ammo-tax/update.json
+          git commit -m "ammo-tax feed -> $VER" || echo "deyisiklik yoxdur"
+          git push origin HEAD:main
