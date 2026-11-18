@@ -1,11 +1,11 @@
 {
-  "version": "31.16.5",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.5/app.asar",
-  "asarSha256": "281898e26b958436202ff01ab39124dc1c0d2ff232ad2bc5073afabab572cd69",
+  "version": "31.16.6",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.6/app.asar",
+  "asarSha256": "12817bdb1d418fa0d5c96d5644be4445bb2cecd50ab72332a14e55324f00b0e8",
   "notes": [
-    "Yenilenme etibarliligi: fayl tutulu olanda da (ad deyisme alinmasa) ustunden kopyalanir ve bayt-bayt yoxlanir",
-    "Qaliq fayllar (pending, komekci .vbs/.bat) avtomatik temizlenir",
-    "Tek nusxe; Firebase oxumalari ~10 defe az"
+    "Lisenziya kilidi düzəldildi: Firebase limiti (429), server xətası və ya internet kəsilməsi artıq proqramı kilidləmir.",
+    "Son təsdiqlənmiş lisenziya kompüterdə 30 gün saxlanır.",
+    "Admin paneli: limit dolanda boş siyahı əvəzinə xəbərdarlıq; avtomatik yeniləmə 10 dəqiqəyə endirildi."
   ],
   "date": "2026-11-18",
   "page": "https://github.com/Memmed91/ammo-suite-update/releases"
