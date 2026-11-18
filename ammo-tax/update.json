@@ -1,10 +1,11 @@
 {
-  "version": "31.16.7",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.7/app.asar",
-  "asarSha256": "74aad2be58a249007bf42410a95d602e2b6a820705364776f2b817099d7a46de",
+  "version": "31.16.8",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.8/app.asar",
+  "asarSha256": "224a1b283f99ec8d00cdd1afaa7ff0ab202012a94513e70a53a7eed0da2db641",
   "notes": [
-    "Panel nəzarəti: admin hər şirkət və hər işçi üçün sol (AMMO TAX) və sağ (AMMO Vergi Masası) panelləri istənilən vaxt bağlayıb aça bilir.",
-    "Firebase limiti dolanda bağlı panellər açılmır (son vəziyyət saxlanılır)."
+    "ƏDV Əvəzləşməsi: əvəzləşmə balansı (öhdəlik — depozitə daxil olan ƏDV, hüquq — depozitdən alışa ödənilən ƏDV + idxal ƏDV-si, ödəniləcək/keçən qalıq).",
+    "Satış qaimələri və gömrük (e.customs) fonda avtomatik oxunur; idxal ƏDV-si bütün bəyannamələrin 310-cu sətri ilə YGB üzrə tutuşdurulur.",
+    "Qaimə və YGB üzrə ətraflı (mallar, miqdar, qiymət, əsas, ƏDV); İlkin audit və Gömrük auditi eyni rəqəmləri göstərir."
   ],
   "date": "2026-11-18",
   "page": "https://github.com/Memmed91/ammo-suite-update/releases"
