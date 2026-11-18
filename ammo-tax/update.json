@@ -1,11 +1,12 @@
 {
-  "version": "31.16.8",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.8/app.asar",
-  "asarSha256": "224a1b283f99ec8d00cdd1afaa7ff0ab202012a94513e70a53a7eed0da2db641",
+  "version": "31.16.9",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.9/app.asar",
+  "asarSha256": "7b3344b5d1749c8400e9b97b104298118fab59b61496f2e7548bed21144a1e95",
   "notes": [
-    "ƏDV Əvəzləşməsi: əvəzləşmə balansı (öhdəlik — depozitə daxil olan ƏDV, hüquq — depozitdən alışa ödənilən ƏDV + idxal ƏDV-si, ödəniləcək/keçən qalıq).",
-    "Satış qaimələri və gömrük (e.customs) fonda avtomatik oxunur; idxal ƏDV-si bütün bəyannamələrin 310-cu sətri ilə YGB üzrə tutuşdurulur.",
-    "Qaimə və YGB üzrə ətraflı (mallar, miqdar, qiymət, əsas, ƏDV); İlkin audit və Gömrük auditi eyni rəqəmləri göstərir."
+    "AMMO Qoruyucu: gündəlik avtomatik ehtiyat nüsxə (lisenziya, şirkət, istifadəçi, panel məhdudiyyətləri), gözətçi və bir kliklə bərpa.",
+    "Lisenziya və şirkət artıq silinmir: açar — «silinmiş» statusu, şirkət — arxiv; «Bütün datanı sıfırla» bağlandı.",
+    "Müştəri kompüteri lisenziyası bazada tapılmasa işləməyə davam edir və adminə bərpa tələbi göndərir.",
+    "Yeniləmə təhlükəsizliyi: yeni versiya açılmasa əvvəlki versiya avtomatik geri qayıdır."
   ],
   "date": "2026-11-18",
   "page": "https://github.com/Memmed91/ammo-suite-update/releases"
