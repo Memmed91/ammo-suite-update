@@ -48,7 +48,7 @@ jobs:
           fi
           SIZE=$(stat -c%s app.asar)
           SHA=$(sha256sum app.asar | cut -d' ' -f1)
-          BODY="$(gh release view "$TAG" -R "$REPO" --json body -q .body || true)"
+          BODY="$(gh release view "$TAG" -R "$REPO" --json body -q .body | tr -d '\r' || true)"
           EXP="$(printf '%s\n' "$BODY" | grep -oiE 'sha256:[[:space:]]*[0-9a-f]{64}' | grep -oiE '[0-9a-f]{64}' | head -1 || true)"
           echo "size=$SIZE sha=$SHA expected=${EXP:-yoxdur}"
           if [ "$SIZE" -lt 1000000 ]; then echo "Fayl cox kicikdir — dayandi."; exit 1; fi
