@@ -9,5 +9,7 @@
     "Yeniləmə təhlükəsizliyi: yeni versiya açılmasa əvvəlki versiya avtomatik geri qayıdır."
   ],
   "date": "2026-11-18",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.9/AMMO-TAX-Setup-31.16.9.exe",
+  "sha256": "49a26c3a343e492b04c1f6f9510981220c92478de60beca58ffbd20b930ddbd2"
 }
