@@ -1,12 +1,11 @@
 {
-  "version": "31.16.3",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.3/app.asar",
-  "asarSha256": "2f5c5024e0e38c2baeac5c7002fb62514a7367ae0809c4c9e918b3db3bd6f4a7",
+  "version": "31.16.4",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.4/app.asar",
+  "asarSha256": "bda4af45b79e1d1e0fc5832680b8c596edc2ea75279ecc73810b04fc513982a3",
   "notes": [
-    "Firebase oxumalari ~10 defe azaldildi (pulsuz gundelik limit bitmesin)\r",
-    "Xeta olanda proqram tedricen yavaslayir (429 blokunu ozu tezelemir)\r",
-    "Yenileme komekcisi tam gizli ve etibarli isleyir\r",
-    "Gomruk auditi: satilan mallarin maya deyeri invoys esasli; aylar; statuslar\r"
+    "Tek nusxe: proqram ikinci defe acilanda yeni nusxe yaranmir, movcud pencere one gelir",
+    "Gizli qalan artiq nusxeler temizlenir (Firebase limiti ve yenilenme ucun)",
+    "Firebase oxumalari ~10 defe azaldildi; xetada tedricen yavaslama"
   ],
   "date": "2026-11-18",
   "page": "https://github.com/Memmed91/ammo-suite-update/releases"
