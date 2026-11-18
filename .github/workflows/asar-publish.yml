@@ -73,3 +73,57 @@ jobs:
           git add ammo-tax/update.json
           git commit -m "ammo-tax feed -> $VER" || echo "deyisiklik yoxdur"
           git push origin HEAD:main
+
+  # V31.16.9: KÖHNƏ versiyalı kompüterlər (məs. 31.8.0 — asar yeniləməsini bilmir, yalnız setup.exe ilə yenilənir)
+  # üçün eyni versiyadan Windows quraşdırıcısı (NSIS) yığılır, release-ə qoyulur və feed-ə "setup" + "sha256" yazılır.
+  # Beləcə HEÇ BİR müştəri kompüteri yenilənmədən kənarda qalmır — əlaqə heç vaxt itmir.
+  installer:
+    needs: publish
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Quraşdırıcı (setup.exe) yığ və feed-ə əlavə et
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -eu
+          VER="${TAG#v}"
+          W="$RUNNER_TEMP/inst"
+          mkdir -p "$W"
+          cd "$W"
+          gh release download "$TAG" -R "$REPO" -p 'app.asar' || { echo "app.asar yoxdur — keçilir"; exit 0; }
+          npx --yes @electron/asar@3.2.17 extract app.asar app
+          cd app
+          ls -la
+          # pəncərə ikonu (build/icon.png) də paketə düşsün
+          jq '.build.files += ["build/icon.png"]' package.json > p.json && mv p.json package.json
+          npm install --no-save --no-audit --no-fund electron@33.2.1 electron-builder@25.1.8
+          npx electron-builder --win nsis --x64 --publish never
+          EXE="$(ls dist/*.exe | head -1)"
+          OUT="AMMO-TAX-Setup-$VER.exe"
+          cp "$EXE" "$W/$OUT"
+          cd "$W"
+          SHA="$(sha256sum "$OUT" | cut -d' ' -f1)"
+          echo "setup=$OUT sha=$SHA"
+          gh release upload "$TAG" "$OUT" -R "$REPO" --clobber
+          cd "$GITHUB_WORKSPACE"
+          git pull --ff-only origin main
+          CUR="$(jq -r .version ammo-tax/update.json)"
+          if [ "$CUR" != "$VER" ]; then echo "Feed artıq başqa versiyadadır ($CUR) — dəyişdirilmir."; exit 0; fi
+          URL="https://github.com/$REPO/releases/download/$TAG/$OUT"
+          jq --arg u "$URL" --arg s "$SHA" '. + {setup: $u, sha256: $s}' ammo-tax/update.json > t.json
+          mv t.json ammo-tax/update.json
+          cat ammo-tax/update.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ammo-tax/update.json
+          git commit -m "ammo-tax feed -> $VER (setup.exe)" || echo "deyisiklik yoxdur"
+          git push origin HEAD:main
