@@ -1,1 +1,13 @@
-{"version": "31.16.1", "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.1/app.asar", "asarSha256": "25071733db2d52ce679acaeb0e28d431e42b40fa3702b2c72af8d8b62c779aae", "notes": ["Gomruk auditi: Satilan mallarin maya deyeri invoys esasli (vergi ucotu)", "Sirket profili: fealiyyet kod ve ad; kassa, POS, obyekt statuslari", "Daxil olan pullar: rublerin altinda aylar", "Avtomatik yenilenme berpa edildi (asar usulu)"], "date": "2026-11-18", "page": "https://github.com/Memmed91/ammo-suite-update/releases"}
+{
+  "version": "31.16.3",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.3/app.asar",
+  "asarSha256": "2f5c5024e0e38c2baeac5c7002fb62514a7367ae0809c4c9e918b3db3bd6f4a7",
+  "notes": [
+    "Firebase oxumalari ~10 defe azaldildi (pulsuz gundelik limit bitmesin)\r",
+    "Xeta olanda proqram tedricen yavaslayir (429 blokunu ozu tezelemir)\r",
+    "Yenileme komekcisi tam gizli ve etibarli isleyir\r",
+    "Gomruk auditi: satilan mallarin maya deyeri invoys esasli; aylar; statuslar\r"
+  ],
+  "date": "2026-11-18",
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+}
