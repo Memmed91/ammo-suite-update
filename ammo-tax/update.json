@@ -11,5 +11,7 @@
     "- Fondakı yükləmə dəqiqədə ən çox ~120 sorğu — portalın öz səhifələrinə yer qalır."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.19/AMMO-TAX-Setup-31.16.19.exe",
+  "sha256": "419e21bcb40ee42f6913bbb4d8b713e60d2715486ed9408aeaed4db9726d2ae4"
 }
