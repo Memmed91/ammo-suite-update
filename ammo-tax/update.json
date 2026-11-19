@@ -1,15 +1,13 @@
 {
-  "version": "31.16.12",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.12/app.asar",
-  "asarSha256": "2def4bc3e23499dac4ffa7093782606972ff8dba221b59ae4184c7002f7ac2a4",
+  "version": "31.16.13",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.13/app.asar",
+  "asarSha256": "2932b35d943d3b4673bebab06176e0dbb5c66d4aa260ba491d22b86fec9c642d",
   "notes": [
-    "Canlı panel icazələri: admin şirkət və ya işçi üzrə paneli bağlayıb «Yadda saxla» basan kimi işçinin proqramında 1–2 saniyəyə tətbiq olunur (əvvəl 1–5 dəqiqə).",
-    "Gömrük bölməsi, e-taxes.gov.az, AMMO TAX modulları və AMMO Vergi Masası panelləri — hamısı dərhal gizlənir və geri açılır.",
-    "Hesab passivləşdiriləndə və ya silinəndə işçinin proqramı dərhal bağlanır.",
-    "Firebase oxumaları azaldı: yalnız dəyişiklik olanda oxunur (dəqiqəlik yoxlama 5 dəqiqəlik ehtiyat yoxlamaya endirildi)."
+    "İdxal (gömrük) ƏDV-si — yeni qayda: hər ayın ƏN SONUNCU TƏSDİQLƏNMİŞ ƏDV bəyannaməsi (Cari / Analoji / Dəqiqləşdirilmiş / Kameral) götürülür; onun «Əldə edilmiş gömrük bəyannamələri və bu bəyannamələr üzrə aparılmış ödənişlər» bölməsində YGB nömrəsi varsa — həmin YGB əvəzləşib.",
+    "Düzəliş: yeni formalı bəyannamələrdə (Avqust–Oktyabr 2026) YGB siyahısı əvəzinə cəm sətri oxunurdu — YGB-lər həm «əvəzləşib», həm «əvəzləşməyib» sayılırdı. İndi YGB siyahısı portaldan tam oxunur.",
+    "Cəm = əvəzləşib + əvəzləşməyib + bəyannamə vaxtı çatmayıb (qəpiyinə qədər). Ayın bəyannaməsi hələ verilməyibsə YGB «vaxtı çatmayıb» kimi ayrıca göstərilir.",
+    "Eyni qayda ƏDV Əvəzləşməsi, İlkin audit və Gömrük auditində tətbiq olunur. Təkrar (iki ayda) göstərilən YGB ayrıca xəbərdarlıqla çıxır."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.12/AMMO-TAX-Setup-31.16.12.exe",
-  "sha256": "5a24ff148929128c6b3aa70d59683ecadbbc91811b0354f8a02960451f07851d"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
