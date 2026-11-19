@@ -7,5 +7,7 @@
     "- Avtomatik yeniləmədən sonra proqram yenidən açılanda sessiya bərpa olunur (5 dəq ərzində) — hər yeniləmədə yenidən daxil olmaq lazım deyil."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.20/AMMO-TAX-Setup-31.16.20.exe",
+  "sha256": "567c9ed88b530942e3bea9dda44d6e265743e1d7f81181beaec134776d2212b0"
 }
