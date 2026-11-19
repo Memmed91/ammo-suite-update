@@ -9,5 +9,7 @@
     "- Status sətrində limit fasiləsinin izahı."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.16/AMMO-TAX-Setup-31.16.16.exe",
+  "sha256": "ed47e1b7aff92c2b7962cbe5d53ba003f99442715fb091318cdd48f54d693182"
 }
