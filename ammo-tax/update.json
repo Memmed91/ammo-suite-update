@@ -1,14 +1,13 @@
 {
-  "version": "31.16.10",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.10/app.asar",
-  "asarSha256": "cce1d6bb67ba34a4380169b5503d54386cba3baecd9492557936f7c9b9720b1e",
+  "version": "31.16.11",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.11/app.asar",
+  "asarSha256": "5883cbe446afaa1dfdac22fa9eaa20a259df973c161d69fa465a947ebe21a1c3",
   "notes": [
-    "ƏDV Əvəzləşməsi: ƏDV depozit hesabı seçilmiş dövr üçün portalın öz «Exceli endir» sorğusu ilə fonda avtomatik yüklənir (səhifəni açmaq lazım deyil).",
-    "Sətir cəmləri Excel başlığındakı «Cəm mədaxil / məxaric» ilə yoxlanılır; dövrün əvvəlinə və sonuna qalıq göstərilir.",
-    "İdxal: cəmi / əvəzləşib / əvəzləşməyib; ödəniləcək ƏDV depozitdən büdcəyə ödənilənlə müqayisə edilir."
+    "Panel nəzarəti: sol menyudakı bütün bölmələr (e-taxes.gov.az, Gömrük — Gömrük auditi, Sənədlər, Xəbərdarlıq, Gömrük xərcləri, Malların hərəkəti, e.customs.gov.az — və AMMO TAX modulları) və sağdakı AMMO Vergi Masasının bütün panelləri lisenziya idarəetməsində görünür.",
+    "Şirkət üzrə: panelləri söndür/yandır → «Yadda saxla» (bir dəfəyə), «Ləğv et» ilə geri qaytar; qrup üzrə və «Hamısını aç / bağla».",
+    "İşçi üzrə «⚙ Panellər»: eyni tam siyahı qruplarla; şirkətdə bağlı panellər «şirkətdə bağlı» işarəsi ilə göstərilir.",
+    "Bağlanan panel işçinin kompüterində menyudan çıxır (≈1–2 dəq); açıq idisə, avtomatik başqa panelə keçir. Yeni bölmələr idarəetməyə özü düşür."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.10/AMMO-TAX-Setup-31.16.10.exe",
-  "sha256": "4067310bf4deaba838a35603bd3df86a369080482eac2025ebc75cf357e61c4a"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
