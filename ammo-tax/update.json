@@ -1,14 +1,15 @@
 {
-  "version": "31.16.18",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.18/app.asar",
-  "asarSha256": "c809d216e693ee9e088363ac5b83d7ff61826ea76ead94d31568f84597d42d5e",
+  "version": "31.16.19",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.19/app.asar",
+  "asarSha256": "6cae0bab9b6ce8f8fa7575aff7805493276c9d210ae99047226a66d50430397b",
   "notes": [
-    "AMMO TAX 31.16.18",
-    "- DƏQİQLİK: portal qaimələri yalnız GÜN üzrə sıralayır — 500-lük səhifələr arasında eyni günün qaimələri sürüşür: bəzi qaimə iki dəfə gəlir, bəzisi heç gəlmir (canlı yoxlandı: 121 472 sətirdən 13–18). İndi hər pəncərə yoxlanılır; təkrar varsa həmin gün səhifəsiz yenidən oxunur və ümumi sayla tutuşdurulur. Siyahılar artıq 100% tam və təkrarsızdır.",
-    "- Ay sərhədində təkrarlar silinir."
+    "AMMO TAX 31.16.19",
+    "- İlkin audit / Gömrük auditi artıq qaimə sətirlərini GÖZLƏMİR (əvvəl «~61 saat qalıb» yazırdı): yaddaşdakı sətirlər götürülür, qalanı fonda, aşağı prioritetlə yüklənir və e-taxes hər açılanda özü davam edir. Mal qalığı bölməsində canlı irəliləyiş.",
+    "- Audit qaimə siyahılarını portaldan bir dəfə çəkir (ƏDV hissəsi eyni siyahını istifadə edir) — sorğular ~2 dəfə az.",
+    "- ƏDV paneli də bağlanmış illərin siyahısını 7 gün yaddaşdan götürür.",
+    "- Gömrük (e.customs) ən çox 60 san, 804 ən çox 90 san gözlənilir; 804 nəticələri yaddaşda saxlanır.",
+    "- Fondakı yükləmə dəqiqədə ən çox ~120 sorğu — portalın öz səhifələrinə yer qalır."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.18/AMMO-TAX-Setup-31.16.18.exe",
-  "sha256": "97539966d7efbedcd4d792775222115678c2ea248a3ef55591177aa6cd27b412"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
