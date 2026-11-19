@@ -9,5 +9,7 @@
     "Eyni qayda ƏDV Əvəzləşməsi, İlkin audit və Gömrük auditində tətbiq olunur. Təkrar (iki ayda) göstərilən YGB ayrıca xəbərdarlıqla çıxır."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.13/AMMO-TAX-Setup-31.16.13.exe",
+  "sha256": "4eacd73592ef3cfda474b86a753234be3b7633d84db004d8d573248e5915dc6e"
 }
