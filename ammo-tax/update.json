@@ -1,15 +1,13 @@
 {
-  "version": "31.16.11",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.11/app.asar",
-  "asarSha256": "5883cbe446afaa1dfdac22fa9eaa20a259df973c161d69fa465a947ebe21a1c3",
+  "version": "31.16.12",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.12/app.asar",
+  "asarSha256": "2def4bc3e23499dac4ffa7093782606972ff8dba221b59ae4184c7002f7ac2a4",
   "notes": [
-    "Panel nəzarəti: sol menyudakı bütün bölmələr (e-taxes.gov.az, Gömrük — Gömrük auditi, Sənədlər, Xəbərdarlıq, Gömrük xərcləri, Malların hərəkəti, e.customs.gov.az — və AMMO TAX modulları) və sağdakı AMMO Vergi Masasının bütün panelləri lisenziya idarəetməsində görünür.",
-    "Şirkət üzrə: panelləri söndür/yandır → «Yadda saxla» (bir dəfəyə), «Ləğv et» ilə geri qaytar; qrup üzrə və «Hamısını aç / bağla».",
-    "İşçi üzrə «⚙ Panellər»: eyni tam siyahı qruplarla; şirkətdə bağlı panellər «şirkətdə bağlı» işarəsi ilə göstərilir.",
-    "Bağlanan panel işçinin kompüterində menyudan çıxır (≈1–2 dəq); açıq idisə, avtomatik başqa panelə keçir. Yeni bölmələr idarəetməyə özü düşür."
+    "Canlı panel icazələri: admin şirkət və ya işçi üzrə paneli bağlayıb «Yadda saxla» basan kimi işçinin proqramında 1–2 saniyəyə tətbiq olunur (əvvəl 1–5 dəqiqə).",
+    "Gömrük bölməsi, e-taxes.gov.az, AMMO TAX modulları və AMMO Vergi Masası panelləri — hamısı dərhal gizlənir və geri açılır.",
+    "Hesab passivləşdiriləndə və ya silinəndə işçinin proqramı dərhal bağlanır.",
+    "Firebase oxumaları azaldı: yalnız dəyişiklik olanda oxunur (dəqiqəlik yoxlama 5 dəqiqəlik ehtiyat yoxlamaya endirildi)."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.11/AMMO-TAX-Setup-31.16.11.exe",
-  "sha256": "da27d372fb5b7bc26d4d49831aed9e94c2880c3aa879160e578d39992060d1dc"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
