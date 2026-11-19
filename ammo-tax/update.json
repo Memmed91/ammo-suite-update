@@ -9,5 +9,7 @@
     "Firebase oxumaları azaldı: yalnız dəyişiklik olanda oxunur (dəqiqəlik yoxlama 5 dəqiqəlik ehtiyat yoxlamaya endirildi)."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.12/AMMO-TAX-Setup-31.16.12.exe",
+  "sha256": "5a24ff148929128c6b3aa70d59683ecadbbc91811b0354f8a02960451f07851d"
 }
