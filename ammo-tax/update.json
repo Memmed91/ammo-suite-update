@@ -7,5 +7,7 @@
     "31.16.14-ün bütün sürət düzəlişləri daxildir: paralel qaimə siyahıları (500-lük), bəyannamə yaddaşı, IndexedDB sətir yaddaşı, gömrük VÖEN yoxlaması, e.customs avto-bərpa, əmək haqqı avto-doldurma."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.15/AMMO-TAX-Setup-31.16.15.exe",
+  "sha256": "2c3d75b00e1750ea8a97adc2a1d631ed4122d5868eca5caa7f21f6696a1f98fc"
 }
