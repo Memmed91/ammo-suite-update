@@ -8,5 +8,7 @@
     "İdxal: cəmi / əvəzləşib / əvəzləşməyib; ödəniləcək ƏDV depozitdən büdcəyə ödənilənlə müqayisə edilir."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.10/AMMO-TAX-Setup-31.16.10.exe",
+  "sha256": "4067310bf4deaba838a35603bd3df86a369080482eac2025ebc75cf357e61c4a"
 }
