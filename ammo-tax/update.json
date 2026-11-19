@@ -1,11 +1,11 @@
 {
-  "version": "31.16.17",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.17/app.asar",
-  "asarSha256": "86ec8436fe5a47a360e6e383b1ff24c70a867f6f20b4369c324b65200549b9c3",
+  "version": "31.16.18",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.18/app.asar",
+  "asarSha256": "c809d216e693ee9e088363ac5b83d7ff61826ea76ead94d31568f84597d42d5e",
   "notes": [
-    "AMMO TAX 31.16.17",
-    "- Sorğu büdcəsi bərabər addımla (saniyədə ~2,75 sorğu, qısa partlayış 8): portalın HAProxy sayğacı əvvəlki dəqiqəni də saydığı üçün partlayışlar 429 verirdi — artıq 61 saniyəlik fasilələr olmur.",
-    "- Status sətrində «Portal limitinə uyğun sürətlə yüklənir (dəqiqədə ~165 sorğu)» izahı."
+    "AMMO TAX 31.16.18",
+    "- DƏQİQLİK: portal qaimələri yalnız GÜN üzrə sıralayır — 500-lük səhifələr arasında eyni günün qaimələri sürüşür: bəzi qaimə iki dəfə gəlir, bəzisi heç gəlmir (canlı yoxlandı: 121 472 sətirdən 13–18). İndi hər pəncərə yoxlanılır; təkrar varsa həmin gün səhifəsiz yenidən oxunur və ümumi sayla tutuşdurulur. Siyahılar artıq 100% tam və təkrarsızdır.",
+    "- Ay sərhədində təkrarlar silinir."
   ],
   "date": "2026-11-19",
   "page": "https://github.com/Memmed91/ammo-suite-update/releases"
