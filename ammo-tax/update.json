@@ -1,15 +1,14 @@
 {
-  "version": "31.16.13",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.13/app.asar",
-  "asarSha256": "2932b35d943d3b4673bebab06176e0dbb5c66d4aa260ba491d22b86fec9c642d",
+  "version": "31.16.14",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.14/app.asar",
+  "asarSha256": "231e955c032dcd8edd61d6798eddd7a4e3147211cafdc41b57a3f0a3fc13d1da",
   "notes": [
-    "İdxal (gömrük) ƏDV-si — yeni qayda: hər ayın ƏN SONUNCU TƏSDİQLƏNMİŞ ƏDV bəyannaməsi (Cari / Analoji / Dəqiqləşdirilmiş / Kameral) götürülür; onun «Əldə edilmiş gömrük bəyannamələri və bu bəyannamələr üzrə aparılmış ödənişlər» bölməsində YGB nömrəsi varsa — həmin YGB əvəzləşib.",
-    "Düzəliş: yeni formalı bəyannamələrdə (Avqust–Oktyabr 2026) YGB siyahısı əvəzinə cəm sətri oxunurdu — YGB-lər həm «əvəzləşib», həm «əvəzləşməyib» sayılırdı. İndi YGB siyahısı portaldan tam oxunur.",
-    "Cəm = əvəzləşib + əvəzləşməyib + bəyannamə vaxtı çatmayıb (qəpiyinə qədər). Ayın bəyannaməsi hələ verilməyibsə YGB «vaxtı çatmayıb» kimi ayrıca göstərilir.",
-    "Eyni qayda ƏDV Əvəzləşməsi, İlkin audit və Gömrük auditində tətbiq olunur. Təkrar (iki ayda) göstərilən YGB ayrıca xəbərdarlıqla çıxır."
+    "Sürət: qaimə siyahıları 500-lük səhifələrlə və aylar üzrə PARALEL yüklənir (əvvəl 100-lük, ardıcıl idi) — böyük şirkətdə dəfələrlə tez.",
+    "ƏDV Əvəzləşməsi: təsdiqlənmiş bəyannamələrin Əlavə 1 və YGB siyahısı yaddaşda saxlanılır — təkrar hesablamada portaldan yenidən oxunmur; bəyannamələr 8 paralel.",
+    "Audit: qaimə sətirləri 12 paralel və IndexedDB yaddaşında; çox böyük şirkətdə sətirlərin qalanı fonda yüklənir, audit gözləmir (mal qalığı növbəti dəfə tam).",
+    "Gömrük: e.customs-da başqa şirkət açıqdırsa onun məlumatı istifadə olunmur; e.customs yeni versiyadan sonra «Unexpected Application Error» verəndə avtomatik təmiz yenidən yüklənir.",
+    "Əmək haqqı: şirkət, forma və rəhbər e-taxes-də açıq şirkətdən avtomatik; məzuniyyət günləri hər dövrün sonuncu təsdiqlənmiş vahid bəyannaməsindən, paralel oxunur."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.13/AMMO-TAX-Setup-31.16.13.exe",
-  "sha256": "4eacd73592ef3cfda474b86a753234be3b7633d84db004d8d573248e5915dc6e"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
