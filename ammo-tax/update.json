@@ -1,13 +1,13 @@
 {
-  "version": "31.16.15",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.15/app.asar",
-  "asarSha256": "dff2293c5d7ca246b2c7ac696d678ea16d95d328c233ad26d61771caaca9914f",
+  "version": "31.16.16",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.16/app.asar",
+  "asarSha256": "0efdc25c0770190b0ee9a0b7cd0eb51f7feec2ab2b98d4420f28ff782ce33632",
   "notes": [
-    "Sürət: proqramın yaddaşı RAM-da işləyir, diskə fasilə ilə yazılır. Böyük nəticələr (on minlərlə qaimə) ayrıca fayllarda saxlanılır. Əvvəl hər yazmada 30 MB-lıq fayl yenidən yazılırdı və bütün pəncərələrə göndərilirdi.",
-    "31.16.14-ün bütün sürət düzəlişləri daxildir: paralel qaimə siyahıları (500-lük), bəyannamə yaddaşı, IndexedDB sətir yaddaşı, gömrük VÖEN yoxlaması, e.customs avto-bərpa, əmək haqqı avto-doldurma."
+    "AMMO TAX 31.16.16",
+    "- Portalın sorğu limiti (dəqiqədə ~200 sorğu, HAProxy 429) üçün sorğu büdcəsi: ƏDV Əvəzləşməsi / audit artıq «Server xətası (429)» ilə dayanmır; 429 olarsa ~1 dəq fasilə verib özü davam edir.",
+    "- Qaimə sətirləri (mal qalığı) aşağı prioritetlə — əsas hesablamalar gözləmir.",
+    "- Status sətrində limit fasiləsinin izahı."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.15/AMMO-TAX-Setup-31.16.15.exe",
-  "sha256": "2c3d75b00e1750ea8a97adc2a1d631ed4122d5868eca5caa7f21f6696a1f98fc"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
