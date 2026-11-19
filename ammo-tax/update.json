@@ -1,15 +1,12 @@
 {
-  "version": "31.16.9",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.9/app.asar",
-  "asarSha256": "7b3344b5d1749c8400e9b97b104298118fab59b61496f2e7548bed21144a1e95",
+  "version": "31.16.10",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.10/app.asar",
+  "asarSha256": "cce1d6bb67ba34a4380169b5503d54386cba3baecd9492557936f7c9b9720b1e",
   "notes": [
-    "AMMO Qoruyucu: gündəlik avtomatik ehtiyat nüsxə (lisenziya, şirkət, istifadəçi, panel məhdudiyyətləri), gözətçi və bir kliklə bərpa.",
-    "Lisenziya və şirkət artıq silinmir: açar — «silinmiş» statusu, şirkət — arxiv; «Bütün datanı sıfırla» bağlandı.",
-    "Müştəri kompüteri lisenziyası bazada tapılmasa işləməyə davam edir və adminə bərpa tələbi göndərir.",
-    "Yeniləmə təhlükəsizliyi: yeni versiya açılmasa əvvəlki versiya avtomatik geri qayıdır."
+    "ƏDV Əvəzləşməsi: ƏDV depozit hesabı seçilmiş dövr üçün portalın öz «Exceli endir» sorğusu ilə fonda avtomatik yüklənir (səhifəni açmaq lazım deyil).",
+    "Sətir cəmləri Excel başlığındakı «Cəm mədaxil / məxaric» ilə yoxlanılır; dövrün əvvəlinə və sonuna qalıq göstərilir.",
+    "İdxal: cəmi / əvəzləşib / əvəzləşməyib; ödəniləcək ƏDV depozitdən büdcəyə ödənilənlə müqayisə edilir."
   ],
-  "date": "2026-11-18",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.9/AMMO-TAX-Setup-31.16.9.exe",
-  "sha256": "49a26c3a343e492b04c1f6f9510981220c92478de60beca58ffbd20b930ddbd2"
+  "date": "2026-11-19",
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
