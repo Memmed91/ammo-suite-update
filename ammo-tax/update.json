@@ -10,5 +10,7 @@
     "Əmək haqqı: şirkət, forma və rəhbər e-taxes-də açıq şirkətdən avtomatik; məzuniyyət günləri hər dövrün sonuncu təsdiqlənmiş vahid bəyannaməsindən, paralel oxunur."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.14/AMMO-TAX-Setup-31.16.14.exe",
+  "sha256": "5a8e0fa7e1bd3d46084a1b973f6b5873c1d087af1d728d17c36e4268e87f2347"
 }
