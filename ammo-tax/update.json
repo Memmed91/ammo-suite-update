@@ -1,15 +1,12 @@
 {
-  "version": "31.16.16",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.16/app.asar",
-  "asarSha256": "0efdc25c0770190b0ee9a0b7cd0eb51f7feec2ab2b98d4420f28ff782ce33632",
+  "version": "31.16.17",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.17/app.asar",
+  "asarSha256": "86ec8436fe5a47a360e6e383b1ff24c70a867f6f20b4369c324b65200549b9c3",
   "notes": [
-    "AMMO TAX 31.16.16",
-    "- Portalın sorğu limiti (dəqiqədə ~200 sorğu, HAProxy 429) üçün sorğu büdcəsi: ƏDV Əvəzləşməsi / audit artıq «Server xətası (429)» ilə dayanmır; 429 olarsa ~1 dəq fasilə verib özü davam edir.",
-    "- Qaimə sətirləri (mal qalığı) aşağı prioritetlə — əsas hesablamalar gözləmir.",
-    "- Status sətrində limit fasiləsinin izahı."
+    "AMMO TAX 31.16.17",
+    "- Sorğu büdcəsi bərabər addımla (saniyədə ~2,75 sorğu, qısa partlayış 8): portalın HAProxy sayğacı əvvəlki dəqiqəni də saydığı üçün partlayışlar 429 verirdi — artıq 61 saniyəlik fasilələr olmur.",
+    "- Status sətrində «Portal limitinə uyğun sürətlə yüklənir (dəqiqədə ~165 sorğu)» izahı."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.16/AMMO-TAX-Setup-31.16.16.exe",
-  "sha256": "ed47e1b7aff92c2b7962cbe5d53ba003f99442715fb091318cdd48f54d693182"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
