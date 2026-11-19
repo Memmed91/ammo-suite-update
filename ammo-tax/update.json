@@ -8,5 +8,7 @@
     "- Ay sərhədində təkrarlar silinir."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.18/AMMO-TAX-Setup-31.16.18.exe",
+  "sha256": "97539966d7efbedcd4d792775222115678c2ea248a3ef55591177aa6cd27b412"
 }
