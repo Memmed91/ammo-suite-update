@@ -9,5 +9,7 @@
     "Bağlanan panel işçinin kompüterində menyudan çıxır (≈1–2 dəq); açıq idisə, avtomatik başqa panelə keçir. Yeni bölmələr idarəetməyə özü düşür."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.11/AMMO-TAX-Setup-31.16.11.exe",
+  "sha256": "da27d372fb5b7bc26d4d49831aed9e94c2880c3aa879160e578d39992060d1dc"
 }
