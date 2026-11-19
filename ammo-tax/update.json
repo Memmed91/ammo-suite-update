@@ -1,16 +1,11 @@
 {
-  "version": "31.16.14",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.14/app.asar",
-  "asarSha256": "231e955c032dcd8edd61d6798eddd7a4e3147211cafdc41b57a3f0a3fc13d1da",
+  "version": "31.16.15",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.15/app.asar",
+  "asarSha256": "dff2293c5d7ca246b2c7ac696d678ea16d95d328c233ad26d61771caaca9914f",
   "notes": [
-    "Sürət: qaimə siyahıları 500-lük səhifələrlə və aylar üzrə PARALEL yüklənir (əvvəl 100-lük, ardıcıl idi) — böyük şirkətdə dəfələrlə tez.",
-    "ƏDV Əvəzləşməsi: təsdiqlənmiş bəyannamələrin Əlavə 1 və YGB siyahısı yaddaşda saxlanılır — təkrar hesablamada portaldan yenidən oxunmur; bəyannamələr 8 paralel.",
-    "Audit: qaimə sətirləri 12 paralel və IndexedDB yaddaşında; çox böyük şirkətdə sətirlərin qalanı fonda yüklənir, audit gözləmir (mal qalığı növbəti dəfə tam).",
-    "Gömrük: e.customs-da başqa şirkət açıqdırsa onun məlumatı istifadə olunmur; e.customs yeni versiyadan sonra «Unexpected Application Error» verəndə avtomatik təmiz yenidən yüklənir.",
-    "Əmək haqqı: şirkət, forma və rəhbər e-taxes-də açıq şirkətdən avtomatik; məzuniyyət günləri hər dövrün sonuncu təsdiqlənmiş vahid bəyannaməsindən, paralel oxunur."
+    "Sürət: proqramın yaddaşı RAM-da işləyir, diskə fasilə ilə yazılır. Böyük nəticələr (on minlərlə qaimə) ayrıca fayllarda saxlanılır. Əvvəl hər yazmada 30 MB-lıq fayl yenidən yazılırdı və bütün pəncərələrə göndərilirdi.",
+    "31.16.14-ün bütün sürət düzəlişləri daxildir: paralel qaimə siyahıları (500-lük), bəyannamə yaddaşı, IndexedDB sətir yaddaşı, gömrük VÖEN yoxlaması, e.customs avto-bərpa, əmək haqqı avto-doldurma."
   ],
   "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.14/AMMO-TAX-Setup-31.16.14.exe",
-  "sha256": "5a8e0fa7e1bd3d46084a1b973f6b5873c1d087af1d728d17c36e4268e87f2347"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
