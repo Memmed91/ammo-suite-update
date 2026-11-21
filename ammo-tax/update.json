@@ -12,5 +12,7 @@
     "• Vergi/ƏMAS tutulmaları ilə uyğun (2026 və 2019–2025 qaydaları)"
   ],
   "date": "2026-11-21",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.21/AMMO-TAX-Setup-31.16.21.exe",
+  "sha256": "87533430ac24fc7ac18ae7d13ede45ba1187c3af2a78f0db135cddcddd8f0311"
 }
