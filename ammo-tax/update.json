@@ -9,5 +9,7 @@
     "• Uğursuz cəhddə artıq «Yadda saxla» pəncərəsi açılmır"
   ],
   "date": "2026-11-21",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.22/AMMO-TAX-Setup-31.16.22.exe",
+  "sha256": "1f0451d0d923ce57b8686228191caa4789852d3d30e00731f785ad286dbd8738"
 }
