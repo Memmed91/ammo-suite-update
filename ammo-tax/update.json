@@ -1,13 +1,16 @@
 {
-  "version": "31.16.20",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.20/app.asar",
-  "asarSha256": "247a0b4644e37ce92afe6c6f4e9aae7b7aafd3bc9565eae70222c7a71dcb4122",
+  "version": "31.16.21",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.21/app.asar",
+  "asarSha256": "96f7da3e1c459f80224a23f289a62f0f4bc1937938377d27b3dbfe4ed2e6877e",
   "notes": [
-    "AMMO TAX 31.16.20",
-    "- Avtomatik yeniləmədən sonra proqram yenidən açılanda sessiya bərpa olunur (5 dəq ərzində) — hər yeniləmədə yenidən daxil olmaq lazım deyil."
+    "AMMO TAX 31.16.21 — Əmək haqqı modulu",
+    "• Yenidən işə qəbul (eyni gün xitam + yeni müqavilə) — işçi artıq hesablamadan düşmür",
+    "• Ay ərzində xitam olunan işçilər işlədiyi günlər üzrə hesablanır",
+    "• Məzuniyyət: yığılan — əmək münasibətinin başlanğıcından bu günə; istifadə — vahid bəyannamələrdə yalnız «əmək məzuniyyəti» (_401) günləri; «İstifadə» xanasına basanda il · rüb · gün açılışı",
+    "• Vəzifəyə görə mütəxəssis / adi fəhlə avtomatik seçilir (dəyişmək olar)",
+    "• Yeni panel: «Son haqq-hesab» — ƏMAS + bank çıxarışı + istifadə olunmamış məzuniyyət kompensasiyası",
+    "• Vergi/ƏMAS tutulmaları ilə uyğun (2026 və 2019–2025 qaydaları)"
   ],
-  "date": "2026-11-19",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.20/AMMO-TAX-Setup-31.16.20.exe",
-  "sha256": "567c9ed88b530942e3bea9dda44d6e265743e1d7f81181beaec134776d2212b0"
+  "date": "2026-11-21",
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
