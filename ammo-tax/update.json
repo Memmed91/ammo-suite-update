@@ -1,18 +1,13 @@
 {
-  "version": "31.16.21",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.21/app.asar",
-  "asarSha256": "96f7da3e1c459f80224a23f289a62f0f4bc1937938377d27b3dbfe4ed2e6877e",
+  "version": "31.16.22",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.22/app.asar",
+  "asarSha256": "dd76e1082b822a02ccd24e6350955057ac95913a53cf99db2f9c4a4d53e246d5",
   "notes": [
-    "AMMO TAX 31.16.21 — Əmək haqqı modulu",
-    "• Yenidən işə qəbul (eyni gün xitam + yeni müqavilə) — işçi artıq hesablamadan düşmür",
-    "• Ay ərzində xitam olunan işçilər işlədiyi günlər üzrə hesablanır",
-    "• Məzuniyyət: yığılan — əmək münasibətinin başlanğıcından bu günə; istifadə — vahid bəyannamələrdə yalnız «əmək məzuniyyəti» (_401) günləri; «İstifadə» xanasına basanda il · rüb · gün açılışı",
-    "• Vəzifəyə görə mütəxəssis / adi fəhlə avtomatik seçilir (dəyişmək olar)",
-    "• Yeni panel: «Son haqq-hesab» — ƏMAS + bank çıxarışı + istifadə olunmamış məzuniyyət kompensasiyası",
-    "• Vergi/ƏMAS tutulmaları ilə uyğun (2026 və 2019–2025 qaydaları)"
+    "AMMO TAX 31.16.22 — Əmək haqqı",
+    "• Məzuniyyət / Son haqq-hesab «Doldur»: e-taxes paneli açılmayıbsa arxa planda özü açılır və saxlanmış sessiya ilə oxuyur (əvvəl «no_tab» xətası verirdi)",
+    "• Sessiya bitibsə giriş ekranı avtomatik önə gəlir",
+    "• Uğursuz cəhddə artıq «Yadda saxla» pəncərəsi açılmır"
   ],
   "date": "2026-11-21",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.21/AMMO-TAX-Setup-31.16.21.exe",
-  "sha256": "87533430ac24fc7ac18ae7d13ede45ba1187c3af2a78f0db135cddcddd8f0311"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
