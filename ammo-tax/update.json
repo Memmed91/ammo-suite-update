@@ -1,15 +1,17 @@
 {
-  "version": "31.16.22",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.22/app.asar",
-  "asarSha256": "dd76e1082b822a02ccd24e6350955057ac95913a53cf99db2f9c4a4d53e246d5",
+  "version": "31.16.23",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.23/app.asar",
+  "asarSha256": "504112bc529a3fa667fe198016d17929c24f32a8bfc6129ff2c81f9c3a5e713e",
   "notes": [
-    "AMMO TAX 31.16.22 — Əmək haqqı",
-    "• Məzuniyyət / Son haqq-hesab «Doldur»: e-taxes paneli açılmayıbsa arxa planda özü açılır və saxlanmış sessiya ilə oxuyur (əvvəl «no_tab» xətası verirdi)",
-    "• Sessiya bitibsə giriş ekranı avtomatik önə gəlir",
-    "• Uğursuz cəhddə artıq «Yadda saxla» pəncərəsi açılmır"
+    "AMMO TAX 31.16.23 — sürət və Son haqq-hesab bank oxuyucusu",
+    "• Sürət: ağır qoruma (control-flow flattening) yalnız lisenziya fayllarında qaldı — qalan modullar ~3 dəfə sürətli; Son haqq-hesab hesablaması 6,3 san → ~0,05 san, təkrar açılışda yaddaşdan",
+    "• İstənilən bankın çıxarışı özü tanınır (Turan daxil): tarix / məbləğ / debet-kredit / təyinat / alan sütunları avtomatik",
+    "• Ödəniş işçiyə FİN və ya soyad + ad + ata adı ilə bağlanır (ad sırasına həssas — ata adı fərqlidirsə başqa adamdır)",
+    "• Ad yazılmayıbsa: təyinatdakı ay + məbləğ yalnız bir işçidə qəpiyinədək düz gəlirsə ona; əks halda siyahıda qalır, işçini bir dəfə seçirsiniz — yadda qalır",
+    "• Eyni gün eyni məbləğli köçürmələr artıq itmir (əvvəl bir dəfə sayılırdı)",
+    "• Vahid bəyannamədəki ödənişsiz məzuniyyət günlərinə maaş hesablanmır",
+    "• Bölgü paneli: ad üzrə / məbləğ üzrə / seçilmiş / adı yazılmayan / keçmiş işçilər / dövrdən əvvəlki aylar"
   ],
-  "date": "2026-11-21",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.22/AMMO-TAX-Setup-31.16.22.exe",
-  "sha256": "1f0451d0d923ce57b8686228191caa4789852d3d30e00731f785ad286dbd8738"
+  "date": "2026-11-22",
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
