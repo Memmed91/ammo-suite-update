@@ -13,5 +13,7 @@
     "• Bölgü paneli: ad üzrə / məbləğ üzrə / seçilmiş / adı yazılmayan / keçmiş işçilər / dövrdən əvvəlki aylar"
   ],
   "date": "2026-11-22",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.23/AMMO-TAX-Setup-31.16.23.exe",
+  "sha256": "2246b42f69e2420f83e8dce819dda02c2c9a3b37632840b6ef640dbc1f43f2ac"
 }
