@@ -1,15 +1,14 @@
 {
-  "version": "31.16.25",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.25/app.asar",
-  "asarSha256": "ed798f0d7894e1ec8b6e7e1c5f8237340f0466e6153cb78c0f69bed1224c9ca5",
+  "version": "31.16.26",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.26/app.asar",
+  "asarSha256": "1f67d67f3d7ed050a21db4bac1ec5723f8a424766a346e295e86bae46eccddf3",
   "notes": [
-    "AMMO TAX 31.16.25 — Sürücü gəliri (direktor hesabatı)",
-    "• Yeni tutulma: Musa — 5%, «əvvəlki tutulmalardan sonra qalandan» (10% gəlir vergisi − nağdlaşdırma − Turnisə xanım → qalığın 5%-i). Nümunə: 1965,91 − 98,30 − 98,30 − 88,47 = 1680,84 hesablanacaq məbləğ; paylar (Məmməd 20% və s.) bundan hesablanır",
-    "• Mövcud ayarlara Musa avtomatik əlavə olunur (istifadəçinin bölgüsü saxlanılır); «Ayarlar»da faizi/sırası dəyişdirilə bilər",
-    "• Məbləğlər qəpiyə yuvarlaqlaşdırılır — kağız üzərindəki hesabla eyni"
+    "AMMO TAX 31.16.26 — Sürücü gəliri (direktor hesabatı)",
+    "• Musa = hesablanacaq məbləğin 5%-i, yalnız BİR dəfə (yuxarıda) çıxılır: 1965,91 − 98,30 − 98,30 − 84,25 = 1685,06; Musa 1685,06 × 5% = 84,25",
+    "• Aşağıdakı ikinci «Musa» payı silindi (ikiqat çıxılırdı); Xəyalə xanım = hesablanacaq − Məmməd 20%",
+    "• Musaya edilmiş ödənişlər (məs. 75,00 «ödəniş edildi») itmir: Musanın tutulmasına əlavə olunur, Məmmədin payından çıxılır",
+    "• Yoxlama: 98,30 + 98,30 + 84,25 + 337,01 + 1348,05 = 1965,91"
   ],
   "date": "2026-11-26",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.25/AMMO-TAX-Setup-31.16.25.exe",
-  "sha256": "404dd365abbddb886a408656655a3d798ce51ecbbb72b2a372f871c065d538cb"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
