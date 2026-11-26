@@ -9,5 +9,7 @@
     "• Məbləğlər qəpiyə yuvarlaqlaşdırılır — kağız üzərindəki hesabla eyni"
   ],
   "date": "2026-11-26",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.25/AMMO-TAX-Setup-31.16.25.exe",
+  "sha256": "404dd365abbddb886a408656655a3d798ce51ecbbb72b2a372f871c065d538cb"
 }
