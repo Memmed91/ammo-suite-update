@@ -1,16 +1,13 @@
 {
-  "version": "31.16.24",
-  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.24/app.asar",
-  "asarSha256": "1f7d7f1a5e98a087fd47264cfe87ef4dd593e607aac63a01fdef29a0e4d3085a",
+  "version": "31.16.25",
+  "asar": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.25/app.asar",
+  "asarSha256": "ed798f0d7894e1ec8b6e7e1c5f8237340f0466e6153cb78c0f69bed1224c9ca5",
   "notes": [
-    "AMMO TAX 31.16.24 — ƏDV Əvəzləşməsi",
-    "• ƏDV depozit hesabı (şəxsi hesab vərəqəsi) artıq HƏMİŞƏ gətirilir — əvvəl paneldə söndürülə bilən seçim idi; söndürüləndə «Əvəzləşmə balansı hesablanmadı» çıxırdı",
-    "• Nəticə səhifəsində depozit yoxdursa — açılan kimi portaldan özü gətirir (e-taxes bağlıdırsa arxa planda açır), müvəqqəti xətada təkrar cəhd",
-    "• Yuxarıda göstərici: «gətirildi / gətirilir / gətirilmədi» · dövr · əməliyyat sayı · mədaxil / məxaric · qalıqlar · cəmlərin yoxlaması; basanda portalın öz Excel faylı (ƏDV_DH_Əməliyyatlar) yüklənir",
-    "• Hər bölmənin (Alış qaimələri, Əvəzləşmə hüququ var/yoxdur, Öhdəlik, Gömrük YGB, Aylar, Təchizatçılar, Əlavə 1, Depozit, Bəyannamələr) üstündə «⬇ Excel» və «⬇ PDF» — seçilmiş görünüş və filtrlərlə"
+    "AMMO TAX 31.16.25 — Sürücü gəliri (direktor hesabatı)",
+    "• Yeni tutulma: Musa — 5%, «əvvəlki tutulmalardan sonra qalandan» (10% gəlir vergisi − nağdlaşdırma − Turnisə xanım → qalığın 5%-i). Nümunə: 1965,91 − 98,30 − 98,30 − 88,47 = 1680,84 hesablanacaq məbləğ; paylar (Məmməd 20% və s.) bundan hesablanır",
+    "• Mövcud ayarlara Musa avtomatik əlavə olunur (istifadəçinin bölgüsü saxlanılır); «Ayarlar»da faizi/sırası dəyişdirilə bilər",
+    "• Məbləğlər qəpiyə yuvarlaqlaşdırılır — kağız üzərindəki hesabla eyni"
   ],
-  "date": "2026-11-24",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
-  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.24/AMMO-TAX-Setup-31.16.24.exe",
-  "sha256": "6a19e691b6ca1dc9fcf14a46c53f5d6c0f1fdef3cba077b5925444bb82b2206f"
+  "date": "2026-11-26",
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
 }
