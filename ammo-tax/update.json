@@ -10,5 +10,7 @@
     "• Yoxlama: 98,30 + 98,30 + 84,25 + 337,01 + 1348,05 = 1965,91"
   ],
   "date": "2026-11-26",
-  "page": "https://github.com/Memmed91/ammo-suite-update/releases"
+  "page": "https://github.com/Memmed91/ammo-suite-update/releases",
+  "setup": "https://github.com/Memmed91/ammo-suite-update/releases/download/v31.16.26/AMMO-TAX-Setup-31.16.26.exe",
+  "sha256": "532defc0700a7662a8721bd057a59548cb98335b4f0a32c9c5a8484a32fae22a"
 }
